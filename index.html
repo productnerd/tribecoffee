@@ -8,7 +8,7 @@
   <meta name="theme-color" content="#0d0c0a">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Mr+Dafoe&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Roboto+Mono:wght@400;500;600&family=Caveat:wght@600&display=swap">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -16,10 +16,10 @@
   <!-- Nav: one boxed label in each corner, like the LOCAL reference -->
   <header class="nav">
     <a class="nav__logo" href="#top" aria-label="Tribe Coffee Roasters, home">
-      <img src="assets/tribe-logo.svg" alt="" width="64" height="64">
+      <img src="assets/tribe-mark.svg" alt="" width="76" height="74">
     </a>
     <a class="tag nav__mid" href="#beans">The beans</a>
-    <a class="tag nav__mid" href="#buy">Wholesale</a>
+    <a class="tag nav__mid" href="story.html">Our story</a>
     <a class="tag tag--solid" href="#contact">Get in touch</a>
   </header>
 
@@ -228,11 +228,18 @@
     </dl>
 
     <div class="foot__base">
-      <img src="assets/tribe-logo.svg" alt="Tribe Coffee Roasters" width="72" height="72">
+      <img src="assets/tribe-mark.svg" alt="Tribe Coffee Roasters" width="84" height="82">
       <p class="hand foot__hand">see you for a cup</p>
       <p class="foot__legal">© 2026 Tribe Coffee Roasters · Roasted in Limassol</p>
     </div>
   </footer>
+
+  <!-- Body-font test toggle (remove before launch) -->
+  <div class="font-toggle" role="group" aria-label="Body font">
+    <button type="button" data-font="outfit" aria-pressed="true">Outfit</button>
+    <button type="button" data-font="mono" aria-pressed="false">Typewriter</button>
+  </div>
+  <script src="font-toggle.js"></script>
 
 </body>
 </html>

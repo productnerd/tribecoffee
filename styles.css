@@ -29,7 +29,13 @@
 
   --f-display: "Spektra", "Arial Narrow", Impact, sans-serif;
   --f-body: "Outfit", system-ui, sans-serif;
-  --f-hand: "Mr Dafoe", cursive;
+  /* Figma Hand if installed (its licence covers Figma's apps only), else Caveat */
+  --f-hand: "Figma Hand", "Caveat", cursive;
+
+  /* Stacked shadows that give Spektra a little depth */
+  --shade-1: #8e2c1e;
+  --shade-2: #6a2015;
+  --shade-3: #46150d;
 
   --gutter: clamp(16px, 2vw, 32px);
   --section: clamp(88px, 11vw, 160px);
@@ -46,7 +52,7 @@ html { scroll-behavior: smooth; }
 
 body {
   margin: 0;
-  background: var(--canvas);
+  background: var(--canvas) url("assets/coffee-floral.svg") 0 0 / 900px repeat;
   color: var(--cream);
   font: 400 17px/1.45 var(--f-body);
   -webkit-font-smoothing: antialiased;
@@ -119,6 +125,22 @@ a.tag--solid:hover { color: var(--cream); }
   color: var(--red);
 }
 
+.display, .step__word, .bean__name, .buy__title {
+  text-shadow: 1px 1px 0 var(--shade-1), 2px 2px 0 var(--shade-2), 3px 3px 0 var(--shade-3), 4px 6px 12px rgba(0, 0, 0, 0.45);
+}
+
+/* Cream Spektra gets grey-brown shading instead of red */
+.step__word, .bean__name, .buy__card:first-child .buy__title {
+  --shade-1: #a8a59b;
+  --shade-2: #6f6d66;
+  --shade-3: #3b3a36;
+}
+.step:nth-child(3) .step__word, .buy__card:nth-child(2) .buy__title {
+  --shade-1: #8e2c1e;
+  --shade-2: #6a2015;
+  --shade-3: #46150d;
+}
+
 .eyebrow {
   font: 600 12px/1 var(--f-body);
   letter-spacing: 0.1em;
@@ -127,7 +149,7 @@ a.tag--solid:hover { color: var(--cream); }
 }
 
 .hand {
-  font: 400 clamp(27px, 2.4vw, 36px)/1.05 var(--f-hand);
+  font: 600 clamp(25px, 2.2vw, 33px)/1.05 var(--f-hand);
   color: var(--red);
 }
 
@@ -199,7 +221,7 @@ a.tag--solid:hover { color: var(--cream); }
 .nav__mid { margin: 0 9vw; }
 .nav > * { pointer-events: auto; }
 .nav > :last-child { justify-self: end; }
-.nav__logo { width: 64px; }
+.nav__logo { width: 76px; }
 
 /* ---------- Hero ---------- */
 
@@ -209,7 +231,9 @@ a.tag--solid:hover { color: var(--cream); }
   height: 100svh;
   min-height: 620px;
   overflow: hidden;
-  background: radial-gradient(120% 80% at 50% 110%, #1d1a15 0%, var(--canvas) 60%);
+  background:
+    url("assets/coffee-floral.svg") 0 0 / 900px repeat,
+    radial-gradient(120% 80% at 50% 110%, #1d1a15 0%, var(--canvas) 60%);
 }
 
 .hero__word {
@@ -222,7 +246,8 @@ a.tag--solid:hover { color: var(--cream); }
   letter-spacing: -0.01em;
   text-align: center;
   color: var(--red);
-  text-shadow: 0.012em 0.012em 0 #5e1f15;
+  /* same layered depth, scaled up for the giant word */
+  text-shadow: 0.003em 0.003em 0 var(--shade-1), 0.006em 0.006em 0 var(--shade-2), 0.009em 0.009em 0 var(--shade-3), 0.012em 0.018em 0.03em rgba(0, 0, 0, 0.5);
   user-select: none;
 }
 
@@ -466,14 +491,61 @@ a.tag--solid:hover { color: var(--cream); }
   gap: 24px;
   padding: 28px var(--gutter) 36px;
 }
-.foot__base img { width: 72px; }
+.foot__base img { width: 84px; }
 .foot__hand { color: var(--cream); transform: rotate(-4deg); }
 .foot__legal { margin-left: auto; color: var(--cream-dim); font-size: 13px; }
+
+/* ---------- Our story page ---------- */
+
+.tag[aria-current="page"] { border-color: var(--red); color: var(--red); }
+
+.story-hero {
+  position: relative;
+  display: grid;
+  grid-template-columns: 1.1fr 1fr;
+  align-items: end;
+  gap: 32px;
+  min-height: 92vh;
+  min-height: 92svh;
+  padding: 140px var(--gutter) 48px;
+}
+.story-hero__word { font-size: clamp(120px, 21vw, 360px); }
+.story-hero__art { aspect-ratio: 4 / 3; }
+.story-hero__hand {
+  position: absolute;
+  left: calc(var(--gutter) + 1vw);
+  top: 112px;
+  transform: rotate(-5deg);
+  color: var(--cream);
+}
+
+.story { padding-top: var(--section); }
+.story__grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 40px 64px;
+  padding: 48px var(--gutter) 0;
+}
+.story__lede {
+  font: 700 clamp(56px, 6.4vw, 108px)/0.86 var(--f-display);
+  text-transform: uppercase;
+  text-shadow: 1px 1px 0 #a8a59b, 2px 2px 0 #6f6d66, 3px 3px 0 #3b3a36, 4px 6px 12px rgba(0, 0, 0, 0.45);
+}
+.story__body p { max-width: 46ch; margin-bottom: 1em; font-size: 20px; color: var(--cream-dim); }
+.story__body .story__hand { color: var(--red); font-size: clamp(30px, 2.8vw, 42px); transform: rotate(-3deg); }
+
+.people { padding-top: var(--section); }
+.people__grid { grid-template-columns: repeat(4, 1fr); }
+.people__grid .bean__name { font-size: clamp(48px, 4.4vw, 76px); }
+.people__grid .bean__bar span:last-child { white-space: nowrap; }
+.bean--you { text-decoration: none; color: inherit; }
+.bean--you .bean__panel { background: var(--slate); }
 
 /* ---------- Smaller screens ---------- */
 
 @media (max-width: 1000px) {
-  .beans__grid { grid-template-columns: repeat(2, 1fr); }
+  .beans__grid, .people__grid { grid-template-columns: repeat(2, 1fr); }
+  .story-hero, .story__grid { grid-template-columns: 1fr; }
   .buy__grid { grid-template-columns: 1fr; }
   .nav__mid { margin: 0 3vw; }
 }
@@ -481,7 +553,7 @@ a.tag--solid:hover { color: var(--cream); }
 @media (max-width: 720px) {
   .nav, .hero__foot { grid-template-columns: 1fr 1fr; }
   .nav__mid { display: none; }
-  .nav__logo { width: 52px; }
+  .nav__logo { width: 60px; }
 
   .hero__word { top: 84px; font-size: 60vw; }
   .hero__art { width: calc(100% - 2 * var(--gutter)); height: 58%; }
@@ -492,8 +564,10 @@ a.tag--solid:hover { color: var(--cream); }
   .steps__list { grid-template-columns: 1fr; gap: 56px; }
   .step__aside { bottom: auto; top: 46%; }
 
-  .beans__grid { grid-template-columns: 1fr; }
+  .beans__grid, .people__grid { grid-template-columns: 1fr; }
   .bean__hand { right: 0; }
+  .story-hero { padding-top: 120px; }
+  .story-hero__hand { top: 96px; }
 
   .buy__hand { position: static; transform: rotate(-3deg); text-align: left; }
 
@@ -503,6 +577,40 @@ a.tag--solid:hover { color: var(--cream); }
   .foot__base { flex-wrap: wrap; }
   .foot__legal { margin-left: 0; width: 100%; }
 }
+
+/* ---------- Body-font test toggle (remove before launch) ---------- */
+
+html.mono { --f-body: "Roboto Mono", ui-monospace, monospace; }
+html.mono body { font-size: 15.5px; }
+html.mono .tag, html.mono .btn, html.mono .eyebrow { letter-spacing: 0.02em; }
+
+.font-toggle {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  z-index: 200;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1.5px solid var(--cream-faint);
+  border-radius: 8px;
+  background: var(--canvas);
+  transform: translateX(-50%);
+}
+.font-toggle button {
+  padding: 8px 12px 7px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--cream-dim);
+  font: 600 11px/1 var(--f-body);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.font-toggle button:first-child { font-family: "Outfit", sans-serif; }
+.font-toggle button:last-child { font-family: "Roboto Mono", monospace; }
+.font-toggle button[aria-pressed="true"] { background: var(--cream); color: var(--black); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
