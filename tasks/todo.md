@@ -38,7 +38,7 @@ One page, dark mode, static HTML/CSS (no build). Preview: `python3 -m http.serve
 - [x] Style references and trials in `references/` (kept out of git)
 
 ## Done (2026-10-15, B&W variations)
-- [x] Illustrations and flavour surfaces redrawn twice on Higgsfield: Ink (style A, line art) and B&W (current 70s style)
+- [x] Ink: brand-new illustrations and flavour surfaces drawn from style reference A (not traced); B&W: the current 70s art redrawn in black and white
 - [x] Colour / Ink / B&W switch at the bottom of both pages (`art-switch.js`, `.art-switch`); remove before launch
 
 ## Waiting on Maria
