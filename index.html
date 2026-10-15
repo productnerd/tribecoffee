@@ -5,10 +5,10 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tribe Coffee Roasters · Limassol</title>
   <meta name="description" content="Specialty coffee, sourced from origin and roasted in Limassol. Wholesale for cafés, and bags to take home from Top Tier.">
-  <meta name="theme-color" content="#0d0c0a">
+  <meta name="theme-color" content="#1b1612">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Roboto+Mono:wght@400;500;600&family=Caveat:wght@600&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&family=Nanum+Pen+Script&display=swap">
   <link rel="stylesheet" href="styles.css">
 </head>
 <body>
@@ -34,7 +34,7 @@
 
       <div class="ph hero__art">
         <span class="ph__label">Illustration 01 · Hero</span>
-        <span class="ph__brief">The Tribe crew, waist up, overlapping the word: two roasters, peace signs, one with a V60, one hugging a bag of beans. Stippled ink, cream + red.</span>
+        <span class="ph__brief">The Tribe crew, waist up, overlapping the word: two roasters, peace signs, one with a V60, one hugging a bag of beans. Stippled ink, beige + orange.</span>
       </div>
 
       <!-- TODO: real email -->
@@ -46,9 +46,7 @@
 
       <nav class="hero__foot" aria-label="Elsewhere">
         <a class="tag" href="https://www.instagram.com/tribecoffeeroasters/" target="_blank" rel="noopener">Instagram</a>
-        <span class="tag tag--quiet nav__mid">Roasted in Limassol</span>
-        <a class="tag nav__mid" href="https://maps.google.com/?cid=18486916382164832" target="_blank" rel="noopener">Buy at Top Tier Room</a>
-        <a class="tag" href="#buy">Wholesale</a>
+        <span class="tag tag--quiet hero__live"><span class="pulse" aria-hidden="true"></span>Roasted in Limassol</span>
       </nav>
     </section>
 
@@ -97,8 +95,9 @@
         <!-- TODO: confirm every name, note and size below -->
         <article class="bean">
           <div class="bean__panel">
+            <button class="bean__open" type="button" aria-label="Open details"></button>
             <div class="bean__bar"><span>01</span><span class="bean__grip"></span><span>250g · 1kg</span></div>
-            <div class="ph ph--light bean__art"><span class="ph__label">Bag · Brazil</span></div>
+            <img class="bean__art" src="assets/renders/brazil.jpg" alt="Tribe Brazil coffee bag" width="1400" height="1045" loading="lazy">
             <div class="bean__foot">
               <h3 class="bean__name">Brazil</h3>
               <p class="bean__notes">Chocolate · nuts · caramel</p>
@@ -111,8 +110,9 @@
 
         <article class="bean">
           <div class="bean__panel">
+            <button class="bean__open" type="button" aria-label="Open details"></button>
             <div class="bean__bar"><span>02</span><span class="bean__grip"></span><span>250g · 1kg</span></div>
-            <div class="ph ph--light bean__art"><span class="ph__label">Bag · Ethiopia</span></div>
+            <img class="bean__art" src="assets/renders/ethiopia.jpg" alt="Tribe Ethiopia coffee bag" width="1400" height="1045" loading="lazy">
             <div class="bean__foot">
               <h3 class="bean__name">Ethiopia</h3>
               <p class="bean__notes">Jasmine · bergamot · citrus</p>
@@ -122,8 +122,9 @@
 
         <article class="bean">
           <div class="bean__panel">
+            <button class="bean__open" type="button" aria-label="Open details"></button>
             <div class="bean__bar"><span>03</span><span class="bean__grip"></span><span>250g</span></div>
-            <div class="ph ph--light bean__art"><span class="ph__label">Bag · Costa Rica</span></div>
+            <img class="bean__art" src="assets/renders/costa-rica.jpg" alt="Tribe Costa Rica coffee bag" width="1400" height="1045" loading="lazy">
             <div class="bean__foot">
               <h3 class="bean__name">Costa Rica</h3>
               <p class="bean__notes">Honey · brown sugar · orange</p>
@@ -133,8 +134,9 @@
 
         <article class="bean">
           <div class="bean__panel">
+            <button class="bean__open" type="button" aria-label="Open details"></button>
             <div class="bean__bar"><span>04</span><span class="bean__grip"></span><span>250g · 1kg</span></div>
-            <div class="ph ph--light bean__art"><span class="ph__label">Bag · Excelencia</span></div>
+            <img class="bean__art" src="assets/renders/excelencia.jpg" alt="Tribe Excelencia coffee bag" width="1400" height="1045" loading="lazy">
             <div class="bean__foot">
               <h3 class="bean__name">Excelencia</h3>
               <p class="bean__notes">Caramel · red fruit · cocoa</p>
@@ -144,6 +146,7 @@
 
         <article class="bean">
           <div class="bean__panel">
+            <button class="bean__open" type="button" aria-label="Open details"></button>
             <div class="bean__bar"><span>05</span><span class="bean__grip"></span><span>1kg</span></div>
             <div class="ph ph--light bean__art"><span class="ph__label">Bag · Premium</span></div>
             <div class="bean__foot">
@@ -155,8 +158,9 @@
 
         <article class="bean">
           <div class="bean__panel">
+            <button class="bean__open" type="button" aria-label="Open details"></button>
             <div class="bean__bar"><span>06</span><span class="bean__grip"></span><span>250g</span></div>
-            <div class="ph ph--light bean__art"><span class="ph__label">Bag · Decaf</span></div>
+            <img class="bean__art" src="assets/renders/decaf.jpg" alt="Tribe Decaf coffee bag" width="1400" height="1045" loading="lazy">
             <div class="bean__foot">
               <h3 class="bean__name">Decaf</h3>
               <p class="bean__notes">All the flavour, none of the jitters</p>
@@ -228,18 +232,34 @@
     </dl>
 
     <div class="foot__base">
-      <img src="assets/tribe-mark.svg" alt="Tribe Coffee Roasters" width="84" height="82">
-      <p class="hand foot__hand">see you for a cup</p>
+      <img src="assets/tribe-mark.svg" alt="Tribe Coffee Roasters" width="30" height="29">
       <p class="foot__legal">© 2026 Tribe Coffee Roasters · Roasted in Limassol</p>
     </div>
+    <img class="foot__leaves" src="assets/footer-leaves.webp" alt="" width="2000" height="857" loading="lazy">
   </footer>
 
-  <!-- Body-font test toggle (remove before launch) -->
-  <div class="font-toggle" role="group" aria-label="Body font">
-    <button type="button" data-font="outfit" aria-pressed="true">Outfit</button>
-    <button type="button" data-font="mono" aria-pressed="false">Typewriter</button>
-  </div>
-  <script src="font-toggle.js"></script>
+  <!-- Product popup, filled from the clicked card by beans.js -->
+  <dialog class="bean-dialog" aria-labelledby="bean-dialog-name">
+    <div class="bean-dialog__bar">
+      <form method="dialog"><button class="bean-dialog__close" aria-label="Close">&times;</button></form>
+      <span class="bean__grip"></span>
+      <span class="bean-dialog__sizes"></span>
+    </div>
+    <div class="bean-dialog__body">
+      <div class="bean-dialog__art"></div>
+      <div class="bean-dialog__info">
+        <h3 class="bean__name" id="bean-dialog-name"></h3>
+        <p class="bean-dialog__notes"></p>
+        <div class="bean-dialog__actions">
+          <a class="btn" href="https://maps.google.com/?cid=18486916382164832" target="_blank" rel="noopener">Buy at Top Tier Room</a>
+          <!-- TODO: real wholesale email -->
+          <a class="btn btn--ghost bean-dialog__wholesale" href="mailto:wholesale@tribecoffee.cy">Wholesale enquiry</a>
+        </div>
+      </div>
+    </div>
+  </dialog>
+  <script src="beans.js"></script>
+
 
 </body>
 </html>

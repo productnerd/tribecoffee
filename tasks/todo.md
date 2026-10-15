@@ -19,11 +19,17 @@ One page, dark mode, static HTML/CSS (no build). Preview: `python3 -m http.serve
 - [x] Outfit / Typewriter test toggle at the bottom
 - [x] Our story page with Our people
 
+## Done (2026-10-15, round 4)
+- [x] Body font Roboto Mono (typewriter); handwriting Nanum Pen Script (never Caveat)
+- [x] Orange / beige / warm-black palette, plus a mid brown (--latte)
+- [x] Higgsfield coffee-plant texture behind the page; foreground leaves over the footer
+- [x] Product renders in the cards (Higgsfield, top-down), click opens a product popup
+- [x] Smaller footer type and logo; smaller top logo; hero bottom: Instagram left, pulsing "Roasted in Limassol" right
+
 ## Waiting on Maria
-- [ ] Figma Hand: licensed for Figma's own apps only. Caveat stands in; ask OH no Type about a web licence if she wants the real one
-- [ ] Body font: Outfit or Typewriter (Roboto Mono)? Then remove the test toggle (`font-toggle.js`, `.font-toggle`)
 - [ ] Our story copy (drafted from Tribe's bag, Facebook and Instagram wording) and Our people names, roles, portraits
 - [ ] Real hello@ and wholesale@ emails (no phone number on the site, by choice)
 - [ ] Bean catalogue from Tribe (Maria is asking); until then the six cards stay as they are
-- [ ] Illustrations 01–07 plus six bag drawings (made on Higgsfield), replacing every `.ph` block
+- [ ] Illustrations 01–08 and portraits (made on Higgsfield), replacing every `.ph` block; Premium bag has no photo yet
+- [ ] Product renders: tiny label errors to retouch before launch (Costa Rica "econumies", Excelencia "5B", Brazil mark above the name)
 - [ ] Spektra web licence before going live (files in `fonts/` stay out of git until then)
