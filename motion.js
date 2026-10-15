@@ -5,7 +5,7 @@
   if (!root.classList.contains('motion')) return;
 
   // TRIBE rises in letter by letter
-  var word = document.querySelector('.hero__word [aria-hidden]');
+  var word = document.querySelector('.hero__tribe');
   if (word) {
     word.innerHTML = word.textContent.split('').map(function (c, i) {
       return '<span class="ltr" style="--i:' + i + '">' + c + '</span>';

@@ -290,6 +290,21 @@ a.tag:active, .btn:active {
   text-shadow: 0.003em 0.003em 0 var(--shade-1), 0.006em 0.006em 0 var(--shade-2), 0.009em 0.009em 0 var(--shade-3), 0.012em 0.018em 0.03em rgba(0, 0, 0, 0.5);
   user-select: none;
 }
+/* TRIBE with ROASTERS underneath, spread to exactly the same width */
+.hero__lockup { display: inline-flex; flex-direction: column; }
+.hero__tribe { line-height: 0.8; margin-top: 0.09em; }
+/* ROASTERS sits in front of the crew (TRIBE stays behind them) */
+.hero__roasters {
+  position: relative;
+  z-index: 2;
+  display: flex;
+  justify-content: space-between;
+  margin-top: 0.12em;
+  font: 700 0.1em/1 var(--f-body);
+  letter-spacing: 0;
+  color: var(--cream);
+  text-shadow: 1px 1px 0 #c4ab84, 2px 2px 0 #8a7152, 3px 3px 0 #4a3a2a, 4px 6px 12px rgba(0, 0, 0, 0.45);
+}
 
 /* The crew stand in front of the word, cut off at the waist by the hero's bottom edge */
 .hero__art {
@@ -509,11 +524,25 @@ a.tag:active, .btn:active {
   text-align: right;
   transform: rotate(-6deg);
 }
-/* On the bean photos: written across the top of the picture, pointing at the bag */
-.beans__grid .bean__hand { top: 58px; bottom: auto; color: var(--cream); transform: rotate(5deg); }
-.beans__grid .bean__hand .arrow { color: var(--cream); }
 .bean__hand .arrow { display: block; width: 52px; margin: 2px 34px 0 auto; }
 .beans__grid .bean__hand--alt { top: 56%; bottom: auto; left: 22px; right: auto; color: var(--orange); transform: rotate(-5deg); }
+
+/* Pencil marks: a scribbled underline or loose circle around a word */
+.marked { position: relative; display: inline-block; }
+.mark {
+  position: absolute;
+  overflow: visible;
+  fill: none;
+  stroke: var(--orange);
+  stroke-width: 2.5;
+  stroke-linecap: round;
+  pointer-events: none;
+}
+.mark path { vector-effect: non-scaling-stroke; }
+.mark--under { left: -3%; bottom: -0.32em; width: 106%; height: 0.4em; }
+.mark--circle { left: -18%; top: -38%; width: 136%; height: 176%; }
+.display .mark, .story__lede .mark { stroke-width: 5; }
+.display .mark--under, .story__lede .mark--under { bottom: -0.1em; height: 0.16em; }
 
 /* Pencil underline under Brazil */
 .bean__foot { position: relative; }
@@ -712,6 +741,7 @@ a.tag:active, .btn:active {
 @keyframes art-in { from { opacity: 0; transform: translateX(-50%) translateY(48px); } }
 
 .motion .hero__word .ltr { animation: rise-in 1.1s var(--ease-out) backwards; animation-delay: calc(80ms + var(--i) * 70ms); }
+.motion .hero__roasters { animation: fade-up 0.9s var(--ease-out) 0.55s backwards; }
 .motion .hero__art { animation: art-in 1.2s var(--ease-out) 0.45s backwards; }
 .motion .nav > *, .motion .hero__foot > * { animation: fade-in 0.8s var(--ease-out) backwards; animation-delay: 1.05s; }
 .motion .nav > :last-child, .motion .hero__foot > :nth-child(2) { animation-delay: 1.15s; }
@@ -740,6 +770,7 @@ a.tag:active, .btn:active {
 }
 .motion .hand .arrow path + path { transition-duration: 0.25s; transition-delay: calc(var(--hand-delay) + 1.25s); }
 .motion .hand-mark path { transition-duration: 0.7s; transition-delay: calc(var(--hand-delay) + 1.5s); }
+.motion .mark path { transition-delay: calc(var(--hand-delay) + 0.2s); }
 .motion .hand.is-in .arrow path, .motion .hand-mark.is-in path { stroke-dashoffset: 0; }
 
 /* Popup scales in and out; its picture settles and its text follows */
