@@ -37,7 +37,12 @@ One page, dark mode, static HTML/CSS (no build). Preview: `python3 -m http.serve
 - [x] Hero crew, cherry picking, roaster drum, V60, espresso machine, moka pot + cat, story map in the site
 - [x] Style references and trials in `references/` (kept out of git)
 
+## Done (2026-10-15, B&W variations)
+- [x] Illustrations and flavour surfaces redrawn twice on Higgsfield: Ink (style A, line art) and B&W (current 70s style)
+- [x] Colour / Ink / B&W switch at the bottom of both pages (`art-switch.js`, `.art-switch`); remove before launch
+
 ## Waiting on Maria
+- [ ] Pick Colour, Ink or B&W; then delete the other two image folders and the switch
 - [ ] Our story copy (drafted from Tribe's bag, Facebook and Instagram wording) and Our people names, roles, portraits
 - [ ] Real hello@ and wholesale@ emails (no phone number on the site, by choice)
 - [ ] Bean catalogue from Tribe (Maria is asking); until then the six cards stay as they are

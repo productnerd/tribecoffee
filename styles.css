@@ -296,7 +296,7 @@ a.tag:active, .btn:active {
 .hero__roasters {
   display: flex;
   justify-content: space-between;
-  margin-top: 0.12em;
+  margin-top: -0.65em;
   font: 700 0.1em/1 var(--f-body);
   letter-spacing: 0;
   color: var(--cream);
@@ -799,6 +799,34 @@ a.tag:active, .btn:active {
   .buy__card:hover { border-color: var(--caramel); }
   .foot__grid a:hover { background-size: 100% 1px; }
 }
+
+/* ---------- Illustration test switch (remove before launch) ---------- */
+
+.art-switch {
+  position: fixed;
+  left: 50%;
+  bottom: 16px;
+  z-index: 200;
+  display: flex;
+  gap: 4px;
+  padding: 4px;
+  border: 1.5px solid var(--cream-faint);
+  border-radius: 8px;
+  background: var(--canvas);
+  transform: translateX(-50%);
+}
+.art-switch button {
+  padding: 8px 12px 7px;
+  border: 0;
+  border-radius: 5px;
+  background: transparent;
+  color: var(--cream-dim);
+  font: 600 11px/1 var(--f-body);
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  cursor: pointer;
+}
+.art-switch button[aria-pressed="true"] { background: var(--cream); color: var(--black); }
 
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
