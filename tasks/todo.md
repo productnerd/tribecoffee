@@ -42,7 +42,8 @@ One page, dark mode, static HTML/CSS (no build). Preview: `python3 -m http.serve
 - [x] Colour / Ink / B&W switch at the bottom of both pages (`art-switch.js`, `.art-switch`); remove before launch
 
 ## Waiting on Maria
-- [ ] Pick Colour, Ink or B&W; then delete the other two image folders and the switch
+- [x] B&W chosen as the default (2026-10-15, "for now"); the switch stays until the choice is final
+- [ ] When final: delete the unused image folders and the switch (`art-switch.js`, `.art-switch`)
 - [ ] Our story copy (drafted from Tribe's bag, Facebook and Instagram wording) and Our people names, roles, portraits
 - [ ] Real hello@ and wholesale@ emails (no phone number on the site, by choice)
 - [ ] Bean catalogue from Tribe (Maria is asking); until then the six cards stay as they are
