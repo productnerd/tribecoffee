@@ -212,15 +212,13 @@ a.tag--solid:hover { color: var(--cream); }
   position: fixed;
   inset: 0 0 auto;
   z-index: 50;
-  display: grid;
-  grid-template-columns: 1fr auto auto 1fr;
-  align-items: start;
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
   padding: var(--gutter);
   pointer-events: none;
 }
-.nav__mid { margin: 0 9vw; }
 .nav > * { pointer-events: auto; }
-.nav > :last-child { justify-self: end; }
 .nav__logo { width: 52px; }
 
 /* ---------- Hero ---------- */
@@ -303,10 +301,13 @@ a.tag--solid:hover { color: var(--cream); }
   left: 0;
   right: 0;
   bottom: var(--gutter);
-  display: flex;
-  justify-content: space-between;
+  display: grid;
+  grid-template-columns: 1fr auto 1fr;
+  align-items: center;
   padding: 0 var(--gutter);
 }
+.hero__foot > :first-child { justify-self: start; }
+.hero__foot > :last-child { justify-self: end; }
 
 .hero__live { gap: 9px; color: var(--cream); }
 .pulse {
@@ -545,35 +546,32 @@ a.tag--solid:hover { color: var(--cream); }
   position: relative;
   overflow: hidden;
   padding-top: var(--section);
-  padding-bottom: clamp(190px, 26vw, 390px);
+  /* room for the low middle of the leaves; their tall sides wrap the contact block */
+  padding-bottom: max(130px, 18vw);
 }
 .foot > :not(.foot__leaves) { position: relative; z-index: 1; }
 /* Coffee leaves in front of the footer, partly over the text */
 .foot__leaves {
   position: absolute;
   left: 0;
-  bottom: -5vw;
+  bottom: 0;
   z-index: 2;
   width: 100%;
   height: auto;
   pointer-events: none;
 }
-.foot__top {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 40px var(--gutter) 0;
-}
+/* Contact sits in the middle half, between the two rising bunches of leaves */
+.foot__top, .foot__grid, .foot__base { width: 50%; margin-inline: auto; }
+.foot__top { padding-top: 40px; text-align: center; }
 .foot__word { font-size: clamp(56px, 8vw, 124px); }
-.foot__art { width: min(18vw, 220px); aspect-ratio: 1; flex-shrink: 0; }
 
 .foot__grid {
   display: grid;
-  grid-template-columns: repeat(4, 1fr);
-  gap: 24px;
-  margin-top: 36px;
-  padding: 20px var(--gutter);
+  grid-template-columns: 1fr 1fr;
+  gap: 22px 24px;
+  margin-top: 32px;
+  padding: 22px 0;
+  text-align: center;
   border-top: 1.5px solid var(--cream-faint);
   border-bottom: 1.5px solid var(--cream-faint);
 }
@@ -591,15 +589,15 @@ a.tag--solid:hover { color: var(--cream); }
 .foot__base {
   display: flex;
   align-items: center;
-  gap: 24px;
-  padding: 28px var(--gutter) 36px;
+  justify-content: center;
+  gap: 14px;
+  padding: 22px 0 0;
 }
 .foot__base img { width: 30px; }
-.foot__legal { margin-left: auto; color: var(--cream-dim); font-size: 12px; }
+.foot__legal { color: var(--cream-dim); font-size: 12px; }
 
 /* ---------- Our story page ---------- */
 
-.tag[aria-current="page"] { border-color: var(--orange); color: var(--orange); }
 
 .story-hero {
   position: relative;
@@ -649,12 +647,9 @@ a.tag--solid:hover { color: var(--cream); }
   .beans__grid, .people__grid { grid-template-columns: repeat(2, 1fr); }
   .story-hero, .story__grid { grid-template-columns: 1fr; }
   .buy__grid { grid-template-columns: 1fr; }
-  .nav__mid { margin: 0 3vw; }
 }
 
 @media (max-width: 720px) {
-  .nav { grid-template-columns: 1fr 1fr; }
-  .nav__mid { display: none; }
   .nav__logo { width: 44px; }
 
   .hero__word { top: 84px; font-size: 60vw; }
@@ -674,11 +669,9 @@ a.tag--solid:hover { color: var(--cream); }
   .bean-dialog__body { grid-template-columns: 1fr; }
   .bean-dialog__art .bean__art { height: auto; }
 
-  .foot__top { flex-direction: column; align-items: flex-start; }
-  .foot__art { width: 60%; aspect-ratio: 1; }
+  .foot__top, .foot__grid, .foot__base { width: calc(100% - 2 * var(--gutter)); }
   .foot__grid { grid-template-columns: 1fr; }
   .foot__base { flex-wrap: wrap; }
-  .foot__legal { margin-left: 0; width: 100%; }
 }
 
 @media (prefers-reduced-motion: reduce) {
