@@ -10,10 +10,12 @@ One page, dark mode, static HTML/CSS (no build). Preview: `python3 -m http.serve
 - [x] Contact footer
 - [x] Third-font options page (`fonts.html`); Mr Dafoe in the page for now
 
+## Done (2026-10-15, round 2)
+- [x] Instagram @tribecoffeeroasters; Google Maps link to Tribe @ Top Tier Room (50 Agias Zonis); phone removed
+
 ## Waiting on Maria
 - [ ] Pick the third font (A Caveat Brush, B Homemade Apple, C Mr Dafoe, D Yellowtail), then delete `fonts.html`
-- [ ] Real contact details: hello@ and wholesale@ emails, phone, Instagram handle
-- [ ] Top Tier: exact name, link, address
-- [ ] Confirm the bean list, tasting notes and sizes (Brazil and Ethiopia notes come from the "understanding beans" video; Costa Rica, Excelencia, Premium, Decaf are guesses)
+- [ ] Real hello@ and wholesale@ emails (no phone number on the site, by choice)
+- [ ] Bean catalogue from Tribe (Maria is asking); until then the six cards stay as they are
 - [ ] Illustrations 01–07 plus six bag drawings (made on Higgsfield), replacing every `.ph` block
 - [ ] Spektra web licence before going live (files in `fonts/` stay out of git until then)
