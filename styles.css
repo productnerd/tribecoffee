@@ -27,11 +27,6 @@
   --orange: #ee5a2c;
   --black: #140d09;
 
-  /* Title fills: each colour darkens a little towards the bottom */
-  --fill-orange: linear-gradient(180deg, #f46c3a 0%, #ee5a2c 45%, #c4351b 100%);
-  --fill-cream: linear-gradient(180deg, #f3e7cf 0%, #ecdcbf 40%, #cdb48a 100%);
-  --fill-caramel: linear-gradient(180deg, #c27f3a 0%, #b06d2c 40%, #7a4616 100%);
-
   /* Motion */
   --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
   --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
@@ -158,37 +153,28 @@ a.tag:active, .btn:active {
   color: var(--orange);
 }
 
-/* Spektra titles: subtle gradient fill, then stepped shadows for depth.
-   drop-shadow rather than text-shadow, so the shadow sits under the gradient */
+/* Spektra titles: solid colour, stepped shadows for depth */
 .display, .step__word, .bean__name, .buy__title, .story__lede {
-  --fill: var(--fill-orange);
-  background: var(--fill);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  /* the fill only paints inside the box; caps (and É) rise above these tight line-heights */
-  padding-top: 0.2em;
-  margin-top: -0.2em;
-  filter: drop-shadow(1px 1px 0 var(--shade-1)) drop-shadow(1px 1px 0 var(--shade-2))
-    drop-shadow(1px 1px 0 var(--shade-3)) drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.4));
+  color: var(--orange);
+  text-shadow: 1px 1px 0 var(--shade-1), 2px 2px 0 var(--shade-2), 3px 3px 0 var(--shade-3), 4px 6px 12px rgba(0, 0, 0, 0.45);
 }
 
-/* Beige titles shade towards deeper beige and brown */
+/* Beige titles shade towards brown */
 .step__word, .bean__name, .buy__card:first-child .buy__title, .story__lede {
-  --fill: var(--fill-cream);
+  color: var(--cream);
   --shade-1: #c4ab84;
   --shade-2: #8a7152;
   --shade-3: #4a3a2a;
 }
 /* Source, Roast, Pour: caramel, beige, orange */
 .step:nth-child(1) .step__word {
-  --fill: var(--fill-caramel);
+  color: var(--caramel);
   --shade-1: #8a5321;
   --shade-2: #5e3816;
   --shade-3: #38200c;
 }
 .step:nth-child(3) .step__word, .buy__card:nth-child(2) .buy__title {
-  --fill: var(--fill-orange);
+  color: var(--orange);
   --shade-1: #c9431f;
   --shade-2: #8f2c14;
   --shade-3: #561a0b;
@@ -299,17 +285,10 @@ a.tag:active, .btn:active {
   font: 700 min(62vw, 92svh)/1 var(--f-display);
   letter-spacing: -0.01em;
   text-align: center;
+  color: var(--orange);
+  /* same stepped depth, scaled up for the giant word */
+  text-shadow: 0.003em 0.003em 0 var(--shade-1), 0.006em 0.006em 0 var(--shade-2), 0.009em 0.009em 0 var(--shade-3), 0.012em 0.018em 0.03em rgba(0, 0, 0, 0.5);
   user-select: none;
-}
-/* Same fill and depth, scaled up; on each letter once motion.js splits the word */
-.hero__word > [aria-hidden]:not(.is-split), .hero__word .ltr {
-  display: inline-block;
-  background: var(--fill-orange);
-  -webkit-background-clip: text;
-  background-clip: text;
-  color: transparent;
-  filter: drop-shadow(0.003em 0.003em 0 var(--shade-1)) drop-shadow(0.003em 0.003em 0 var(--shade-2))
-    drop-shadow(0.003em 0.003em 0 var(--shade-3)) drop-shadow(0.006em 0.012em 0.02em rgba(0, 0, 0, 0.45));
 }
 
 .hero__art {
@@ -326,41 +305,19 @@ a.tag:active, .btn:active {
   background-color: rgba(13, 12, 10, 0.55);
 }
 
-.sticker {
-  display: inline-block;
-  padding: 0.18em 0.45em 0.08em;
-  border: 2px solid var(--black);
-  background: var(--cream);
-  color: var(--black);
-  font: 700 clamp(24px, 2.8vw, 44px)/1 var(--f-display);
-  letter-spacing: 0.01em;
-  text-transform: uppercase;
-  text-decoration: none;
-  box-shadow: 5px 5px 0 var(--orange);
-  transition: transform 0.2s;
-}
-.hero__sticker {
-  position: absolute;
-  left: 50%;
-  top: 70%;
-  transform: translateX(-50%) rotate(-4deg);
-}
-.hero__sticker:hover { transform: translateX(-50%) rotate(-1deg) scale(1.03); }
-
 .hero__foot {
   position: absolute;
   left: 0;
   right: 0;
   bottom: var(--gutter);
-  display: grid;
-  grid-template-columns: 1fr auto 1fr;
+  display: flex;
+  justify-content: space-between;
   align-items: center;
   padding: 0 var(--gutter);
 }
-.hero__foot > :first-child { justify-self: start; }
-.hero__foot > :last-child { justify-self: end; }
 
 .hero__live { gap: 9px; color: var(--cream); }
+.flag { width: 18px; height: 12px; flex-shrink: 0; }
 .pulse {
   position: relative;
   width: 8px;
@@ -602,21 +559,9 @@ a.tag:active, .btn:active {
   position: relative;
   overflow: hidden;
   padding-top: var(--section);
-  /* room for the low middle of the leaves; their tall sides wrap the contact block */
-  padding-bottom: max(130px, 18vw);
+  padding-bottom: 48px;
 }
-.foot > :not(.foot__leaves) { position: relative; z-index: 1; }
-/* Coffee leaves in front of the footer, partly over the text */
-.foot__leaves {
-  position: absolute;
-  left: 0;
-  bottom: 0;
-  z-index: 2;
-  width: 100%;
-  height: auto;
-  pointer-events: none;
-}
-/* Contact sits in the middle half, between the two rising bunches of leaves */
+/* Contact sits in the middle half */
 .foot__top, .foot__grid, .foot__base { width: 50%; margin-inline: auto; }
 .foot__top { padding-top: 40px; text-align: center; }
 .foot__word { font-size: clamp(56px, 8vw, 124px); }
@@ -644,13 +589,16 @@ a.tag:active, .btn:active {
 
 .foot__base {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 14px;
+  gap: 8px 14px;
   padding: 22px 0 0;
 }
 .foot__base img { width: 30px; }
 .foot__legal { color: var(--cream-dim); font-size: 12px; }
+.foot__legal a { color: var(--cream); text-decoration: none; }
+.foot__legal a:hover { color: var(--orange); }
 
 /* ---------- Our story page ---------- */
 
@@ -710,7 +658,6 @@ a.tag:active, .btn:active {
 
   .hero__word { top: 84px; font-size: 60vw; }
   .hero__art { width: calc(100% - 2 * var(--gutter)); height: 58%; }
-  .hero__sticker { top: 70%; }
 
   .steps__list { grid-template-columns: 1fr; gap: 56px; }
 
@@ -727,18 +674,15 @@ a.tag:active, .btn:active {
 
 /* ---------- Motion (only with .motion on <html>; see the <head> script) ---------- */
 
-/* Hero on load: letters rise, the art fades up, the sticker slaps on, labels arrive */
+/* Hero on load: letters rise, the art fades up, labels arrive */
 @keyframes rise-in { from { opacity: 0; transform: translateY(0.28em); } }
 @keyframes fade-in { from { opacity: 0; } }
 @keyframes art-in { from { opacity: 0; transform: translateX(-50%) translateY(48px); } }
-@keyframes sticker-in { from { opacity: 0; transform: translateX(-50%) rotate(-18deg) scale(1.3); } }
 
 .motion .hero__word .ltr { animation: rise-in 1.1s var(--ease-out) backwards; animation-delay: calc(80ms + var(--i) * 70ms); }
 .motion .hero__art { animation: art-in 1.2s var(--ease-out) 0.45s backwards; }
-.motion .hero__sticker { animation: sticker-in 0.75s var(--ease-spring) 0.9s backwards; }
 .motion .nav > *, .motion .hero__foot > * { animation: fade-in 0.8s var(--ease-out) backwards; animation-delay: 1.05s; }
 .motion .nav > :last-child, .motion .hero__foot > :nth-child(2) { animation-delay: 1.15s; }
-.motion .hero__foot > :nth-child(3) { animation-delay: 1.25s; }
 
 /* Scroll reveals: motion.js tags elements and adds .is-in as they come into view */
 .motion [data-reveal] {
@@ -748,7 +692,6 @@ a.tag:active, .btn:active {
   transition-delay: calc(var(--i, 0) * 90ms);
 }
 .motion [data-reveal="line"] { opacity: 1; transform: scaleX(0); transform-origin: left; transition: transform 1.2s var(--ease-in-out); }
-.motion [data-reveal="rise"] { transform: translateY(90px); transition-duration: 1s, 1.5s; }
 .motion [data-reveal].is-in { opacity: 1; transform: none; }
 
 /* Handwriting writes itself on, left to right, then its arrow draws */
@@ -785,8 +728,6 @@ a.tag:active, .btn:active {
 
 /* Small hover touches */
 .nav__logo img { transition: transform 0.5s var(--ease-spring); }
-.hero__sticker { transition: transform 0.5s var(--ease-spring); }
-.hero__sticker:active { transform: translateX(-50%) rotate(-2deg) scale(0.97); transition-duration: 0.1s; }
 .buy__card { transition: border-color 0.3s var(--ease-out); }
 .foot__grid a {
   background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;

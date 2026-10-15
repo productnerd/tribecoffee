@@ -10,7 +10,6 @@
     word.innerHTML = word.textContent.split('').map(function (c, i) {
       return '<span class="ltr" style="--i:' + i + '">' + c + '</span>';
     }).join('');
-    word.classList.add('is-split');
   }
 
   // Tag what fades up as it scrolls in; siblings matching the same selector stagger
@@ -27,7 +26,6 @@
   tag('.eyebrow, .section-head > *, .story__grid > *, .story-hero > .display, .story-hero__art');
   tag('.steps__list > li, .beans__grid > *, .buy__grid > *');
   tag('.foot__top, .foot__grid, .foot__base');
-  tag('.foot__leaves', 'rise');
 
   var io = new IntersectionObserver(function (entries) {
     entries.forEach(function (entry) {
