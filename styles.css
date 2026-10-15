@@ -291,18 +291,15 @@ a.tag:active, .btn:active {
   user-select: none;
 }
 
+/* The crew stand in front of the word, cut off at the waist by the hero's bottom edge */
 .hero__art {
   position: absolute;
   left: 50%;
   bottom: 0;
-  width: min(62vw, 920px);
-  height: 62%;
+  width: min(64vw, 1000px, 105svh);
+  max-width: none;
+  height: auto;
   transform: translateX(-50%);
-  border-bottom: 0;
-  justify-content: flex-start;
-  padding-top: 28px;
-  border-radius: 18px 18px 0 0;
-  background-color: rgba(13, 12, 10, 0.55);
 }
 
 .hero__foot {
@@ -352,15 +349,15 @@ a.tag:active, .btn:active {
   padding: 32px var(--gutter) 0;
 }
 .step { position: relative; }
-.step__art { aspect-ratio: 4 / 3; margin-bottom: 20px; }
+.step__art { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; margin-bottom: 20px; }
 .step__word {
   font: 700 clamp(72px, 9vw, 150px)/0.82 var(--f-display);
   text-transform: uppercase;
 }
 .step p:not(.hand) { max-width: 30ch; margin-top: 14px; color: var(--cream-dim); }
 .step__aside {
-  top: 5%;
-  right: 6%;
+  top: 9%;
+  left: 2%;
   transform: rotate(-9deg);
 }
 
@@ -547,11 +544,10 @@ a.tag:active, .btn:active {
   text-transform: uppercase;
 }
 .buy__card > p:not(.tag):not(.hand) { color: var(--cream-dim); }
-.buy__art { aspect-ratio: 16 / 9; }
+.buy__art { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; }
 .buy__actions { display: flex; flex-wrap: wrap; gap: 10px; }
 /* Inside the card, clear of its border so they stay legible */
-.buy__card:first-child .buy__hand { top: clamp(26px, 3vw, 44px); right: clamp(24px, 3vw, 44px); transform: rotate(-5deg); }
-.buy__card:nth-child(2) .buy__hand { bottom: clamp(30px, 3.4vw, 50px); right: clamp(24px, 3vw, 44px); transform: rotate(-4deg); }
+.buy__hand { bottom: clamp(30px, 3.4vw, 50px); right: clamp(24px, 3vw, 44px); transform: rotate(-4deg); }
 
 /* ---------- Footer ---------- */
 
@@ -614,7 +610,7 @@ a.tag:active, .btn:active {
   padding: 140px var(--gutter) 48px;
 }
 .story-hero__word { font-size: clamp(120px, 21vw, 360px); }
-.story-hero__art { aspect-ratio: 4 / 3; }
+.story-hero__art { display: block; width: 100%; height: auto; aspect-ratio: 4 / 3; object-fit: contain; }
 .story-hero__hand {
   left: calc(var(--gutter) + 9vw);
   top: 44%;
@@ -656,8 +652,8 @@ a.tag:active, .btn:active {
 @media (max-width: 720px) {
   .nav__logo { width: 44px; }
 
-  .hero__word { top: 84px; font-size: 60vw; }
-  .hero__art { width: calc(100% - 2 * var(--gutter)); height: 58%; }
+  .hero__word { top: 26svh; font-size: 60vw; }
+  .hero__art { width: 140%; }
 
   .steps__list { grid-template-columns: 1fr; gap: 56px; }
 

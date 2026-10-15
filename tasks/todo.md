@@ -32,10 +32,15 @@ One page, dark mode, static HTML/CSS (no build). Preview: `python3 -m http.serve
 - [x] Hover lift/tilt on cards, pressable 3D buttons, popup scales in and out
 - [x] Gradient fills on Spektra titles; caramel / beige / orange / dark brown palette
 
+## Done (2026-10-15, illustrations)
+- [x] House style: 70s psychedelic cartoon (Maria's reference B), GPT Image 2.5 on Higgsfield, Tribe palette
+- [x] Hero crew, cherry picking, roaster drum, V60, espresso machine, moka pot + cat, story map in the site
+- [x] Style references and trials in `references/` (kept out of git)
+
 ## Waiting on Maria
 - [ ] Our story copy (drafted from Tribe's bag, Facebook and Instagram wording) and Our people names, roles, portraits
 - [ ] Real hello@ and wholesale@ emails (no phone number on the site, by choice)
 - [ ] Bean catalogue from Tribe (Maria is asking); until then the six cards stay as they are
-- [ ] Illustrations 01–08 and portraits (made on Higgsfield), replacing every `.ph` block; Premium bag has no photo yet
+- [ ] Our people portraits (should start from photos of the real people); Premium bag has no photo yet
 - [ ] Product renders: small label details to retouch before launch (Brazil: odd mark above the name; Costa Rica: swoosh above the A missing)
 - [ ] Spektra web licence before going live (files in `fonts/` stay out of git until then)
