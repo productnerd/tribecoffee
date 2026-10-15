@@ -293,10 +293,7 @@ a.tag:active, .btn:active {
 /* TRIBE with ROASTERS underneath, spread to exactly the same width */
 .hero__lockup { display: inline-flex; flex-direction: column; }
 .hero__tribe { line-height: 0.8; margin-top: 0.09em; }
-/* ROASTERS sits in front of the crew (TRIBE stays behind them) */
 .hero__roasters {
-  position: relative;
-  z-index: 2;
   display: flex;
   justify-content: space-between;
   margin-top: 0.12em;
