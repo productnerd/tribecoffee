@@ -592,9 +592,9 @@ a.tag:active, .btn:active {
 .buy__card > p:not(.tag):not(.hand) { color: var(--cream-dim); }
 .buy__art { aspect-ratio: 16 / 9; }
 .buy__actions { display: flex; flex-wrap: wrap; gap: 10px; }
-/* These cross the card's border */
-.buy__card:first-child .buy__hand { top: -16px; right: 8%; transform: rotate(-5deg); }
-.buy__card:nth-child(2) .buy__hand { bottom: -18px; right: 8%; transform: rotate(-4deg); }
+/* Inside the card, clear of its border so they stay legible */
+.buy__card:first-child .buy__hand { top: clamp(26px, 3vw, 44px); right: clamp(24px, 3vw, 44px); transform: rotate(-5deg); }
+.buy__card:nth-child(2) .buy__hand { bottom: clamp(30px, 3.4vw, 50px); right: clamp(24px, 3vw, 44px); transform: rotate(-4deg); }
 
 /* ---------- Footer ---------- */
 
