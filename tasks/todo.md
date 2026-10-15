@@ -31,5 +31,5 @@ One page, dark mode, static HTML/CSS (no build). Preview: `python3 -m http.serve
 - [ ] Real hello@ and wholesale@ emails (no phone number on the site, by choice)
 - [ ] Bean catalogue from Tribe (Maria is asking); until then the six cards stay as they are
 - [ ] Illustrations 01–08 and portraits (made on Higgsfield), replacing every `.ph` block; Premium bag has no photo yet
-- [ ] Product renders: tiny label errors to retouch before launch (Costa Rica "econumies", Excelencia "5B", Brazil mark above the name)
+- [ ] Product renders: small label details to retouch before launch (Brazil: odd mark above the name; Costa Rica: swoosh above the A missing)
 - [ ] Spektra web licence before going live (files in `fonts/` stay out of git until then)
