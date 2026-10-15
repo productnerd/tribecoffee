@@ -493,6 +493,15 @@ a.tag:active, .btn:active {
   white-space: nowrap;
 }
 .bean__notes { margin-top: 8px; color: var(--cream-dim); font-size: 13px; }
+/* Barista note: where each coffee shines */
+.bean__use { margin-top: 10px; color: var(--cream); font-size: 12px; }
+.bean__use span {
+  margin-right: 6px;
+  color: var(--orange);
+  font-weight: 600;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
 
 .bean__hand {
   bottom: 92px;
@@ -500,8 +509,11 @@ a.tag:active, .btn:active {
   text-align: right;
   transform: rotate(-6deg);
 }
+/* On the bean photos: written across the top of the picture, pointing at the bag */
+.beans__grid .bean__hand { top: 58px; bottom: auto; color: var(--cream); transform: rotate(5deg); }
+.beans__grid .bean__hand .arrow { color: var(--cream); }
 .bean__hand .arrow { display: block; width: 52px; margin: 2px 34px 0 auto; }
-.bean__hand--alt { top: auto; bottom: 64px; right: 16px; transform: rotate(-5deg); }
+.beans__grid .bean__hand--alt { top: 56%; bottom: auto; left: 22px; right: auto; color: var(--orange); transform: rotate(-5deg); }
 
 /* Pencil underline under Brazil */
 .bean__foot { position: relative; }
@@ -529,25 +541,49 @@ a.tag:active, .btn:active {
   padding: 0 var(--gutter);
 }
 .buy__card {
+  --pad: clamp(24px, 3vw, 44px);
   position: relative;
   display: flex;
   flex-direction: column;
   gap: 20px;
-  padding: clamp(24px, 3vw, 44px);
+  overflow: hidden;
+  padding: var(--pad) var(--pad) 0;
   border: 1.5px solid var(--cream-faint);
   border-radius: 34px;
-  background: var(--raised);
 }
+/* Each card leans towards its title's colour */
+.buy__card:first-child { background: #3a2818; }
+.buy__card:nth-child(2) { background: #401f13; }
 .buy__card > .tag { align-self: flex-start; }
 .buy__title {
   font: 700 clamp(64px, 7.4vw, 124px)/0.84 var(--f-display);
   text-transform: uppercase;
 }
-.buy__card > p:not(.tag):not(.hand) { color: var(--cream-dim); }
-.buy__art { display: block; width: 100%; height: auto; aspect-ratio: 16 / 9; object-fit: contain; }
+/* The illustration sits just under the title and tucks over its bottom edge */
+.buy__art {
+  position: relative;
+  z-index: 1;
+  display: block;
+  width: 100%;
+  height: auto;
+  aspect-ratio: 16 / 9;
+  object-fit: contain;
+  margin-top: clamp(-56px, -3.4vw, -26px);
+}
+/* Beige panel at the bottom of the card for the description and button */
+.buy__body {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  margin: auto calc(-1 * var(--pad)) 0;
+  padding: var(--pad);
+  background: var(--cream);
+  color: var(--ink);
+}
 .buy__actions { display: flex; flex-wrap: wrap; gap: 10px; }
-/* Inside the card, clear of its border so they stay legible */
-.buy__hand { bottom: clamp(30px, 3.4vw, 50px); right: clamp(24px, 3vw, 44px); transform: rotate(-4deg); }
+/* Inside the panel, clear of the card's border so it stays legible */
+.buy__hand { bottom: calc(var(--pad) + 4px); right: var(--pad); transform: rotate(-4deg); }
 
 /* ---------- Footer ---------- */
 
@@ -719,6 +755,7 @@ a.tag:active, .btn:active {
 .motion .bean-dialog[open] .bean-dialog__info > :nth-child(1) { animation-delay: 0.12s; }
 .motion .bean-dialog[open] .bean-dialog__info > :nth-child(2) { animation-delay: 0.18s; }
 .motion .bean-dialog[open] .bean-dialog__info > :nth-child(3) { animation-delay: 0.24s; }
+.motion .bean-dialog[open] .bean-dialog__info > :nth-child(4) { animation-delay: 0.3s; }
 .motion .bean-dialog.is-closing { animation: dialog-out 0.2s var(--ease-in) forwards; }
 .motion .bean-dialog.is-closing::backdrop { animation: backdrop-out 0.2s var(--ease-in) forwards; }
 
