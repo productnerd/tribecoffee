@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Our story · Tribe Coffee Roasters</title>
   <meta name="description" content="How Tribe sources green coffee from the world's farmers and roasts it in Limassol, and the people who do it.">
-  <meta name="theme-color" content="#1b1612">
+  <meta name="theme-color" content="#22160f">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&family=Nanum+Pen+Script&display=swap">
   <link rel="stylesheet" href="styles.css">
+  <!-- Motion runs only when wanted: off for reduced motion and for ?nomotion=1 -->
+  <script>if(!/nomotion/.test(location.search)&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion')</script>
 </head>
 <body>
 
@@ -66,7 +68,7 @@
             </div>
           </div>
           <p class="hand bean__hand">the one who roasts it all
-            <svg class="arrow" viewBox="0 0 90 60" aria-hidden="true"><path d="M84 6c-14 2-40 6-56 22-7 7-11 15-13 24"/><path d="M5 40c3 5 6 9 10 13 4-5 8-8 14-11"/></svg>
+            <svg class="arrow" viewBox="0 0 90 60" aria-hidden="true"><path pathLength="1" d="M84 6c-14 2-40 6-56 22-7 7-11 15-13 24"/><path pathLength="1" d="M5 40c3 5 6 9 10 13 4-5 8-8 14-11"/></svg>
           </p>
         </article>
 
@@ -128,6 +130,7 @@
     <img class="foot__leaves" src="assets/footer-leaves.webp" alt="" width="2000" height="857" loading="lazy">
   </footer>
 
+  <script src="motion.js"></script>
 
 </body>
 </html>

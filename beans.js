@@ -7,6 +7,7 @@
   var sizes = dialog.querySelector('.bean-dialog__sizes');
   var wholesale = dialog.querySelector('.bean-dialog__wholesale');
   var wholesaleHref = wholesale.getAttribute('href');
+  var animated = document.documentElement.classList.contains('motion');
 
   document.querySelectorAll('.bean__open').forEach(function (button) {
     var card = button.closest('.bean');
@@ -24,8 +25,39 @@
     });
   });
 
-  // A click on the dimmed backdrop closes it too
+  // Play the closing animation before actually closing
+  function close() {
+    if (!animated || dialog.classList.contains('is-closing')) {
+      if (!animated) dialog.close();
+      return;
+    }
+    dialog.classList.add('is-closing');
+    var timer;
+    function done(e) {
+      if (e && (e.target !== dialog || e.pseudoElement)) return;
+      dialog.removeEventListener('animationend', done);
+      clearTimeout(timer);
+      dialog.classList.remove('is-closing');
+      dialog.close();
+    }
+    dialog.addEventListener('animationend', done);
+    // in case the animation never reports back (a hidden tab pauses it)
+    timer = setTimeout(done, 300);
+  }
+
+  dialog.querySelector('.bean-dialog__close').addEventListener('click', function (e) {
+    e.preventDefault();
+    close();
+  });
+  // Escape
+  dialog.addEventListener('cancel', function (e) {
+    e.preventDefault();
+    close();
+  });
+  // A click on the dimmed backdrop (outside the card, not on its frame)
   dialog.addEventListener('click', function (e) {
-    if (e.target === dialog) dialog.close();
+    var r = dialog.getBoundingClientRect();
+    var outside = e.clientX < r.left || e.clientX > r.right || e.clientY < r.top || e.clientY > r.bottom;
+    if (e.target === dialog && outside) close();
   });
 })();

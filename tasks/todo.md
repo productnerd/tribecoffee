@@ -26,6 +26,12 @@ One page, dark mode, static HTML/CSS (no build). Preview: `python3 -m http.serve
 - [x] Product renders in the cards (Higgsfield, top-down), click opens a product popup
 - [x] Smaller footer type and logo; smaller top logo; hero bottom: Instagram left, pulsing "Roasted in Limassol" right
 
+## Done (2026-10-15, motion sprint)
+- [x] Load choreography (letters rise, art fades up, sticker slaps on), scroll reveals with stagger, lines draw, footer leaves rise
+- [x] Handwriting pencilled over the interface and written on; arrows and the Brazil underline draw
+- [x] Hover lift/tilt on cards, pressable 3D buttons, popup scales in and out
+- [x] Gradient fills on Spektra titles; caramel / beige / orange / dark brown palette
+
 ## Waiting on Maria
 - [ ] Our story copy (drafted from Tribe's bag, Facebook and Instagram wording) and Our people names, roles, portraits
 - [ ] Real hello@ and wholesale@ emails (no phone number on the site, by choice)

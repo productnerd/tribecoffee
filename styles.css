@@ -16,25 +16,36 @@
 }
 
 :root {
-  /* Screen-print palette: warm black, paper beige, one orange, plus a mid brown */
-  --canvas: #1b1612;
-  --raised: #241d18;
-  --ink: #2a211b;
-  --cream: #e9dfc8;
-  --cream-dim: rgba(233, 223, 200, 0.64);
-  --cream-faint: rgba(233, 223, 200, 0.16);
-  --latte: #9b7a5a;
-  --orange: #ef7426;
-  --black: #120e0b;
+  /* Palette: vermilion orange, sandy beige, caramel, dark chocolate brown */
+  --canvas: #22160f;
+  --raised: #2d1f16;
+  --ink: #3a2a21;
+  --cream: #ecdcbf;
+  --cream-dim: rgba(236, 220, 191, 0.64);
+  --cream-faint: rgba(236, 220, 191, 0.16);
+  --caramel: #b06d2c;
+  --orange: #ee5a2c;
+  --black: #140d09;
+
+  /* Title fills: each colour darkens a little towards the bottom */
+  --fill-orange: linear-gradient(180deg, #f46c3a 0%, #ee5a2c 45%, #c4351b 100%);
+  --fill-cream: linear-gradient(180deg, #f3e7cf 0%, #ecdcbf 40%, #cdb48a 100%);
+  --fill-caramel: linear-gradient(180deg, #c27f3a 0%, #b06d2c 40%, #7a4616 100%);
+
+  /* Motion */
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+  --ease-in-out: cubic-bezier(0.65, 0, 0.35, 1);
+  --ease-in: cubic-bezier(0.55, 0, 1, 0.45);
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
 
   --f-display: "Spektra", "Arial Narrow", Impact, sans-serif;
   --f-body: "Roboto Mono", ui-monospace, monospace;
   --f-hand: "Nanum Pen Script", cursive;
 
   /* Stacked shadows that give Spektra a little depth */
-  --shade-1: #c25a1c;
-  --shade-2: #8a3e12;
-  --shade-3: #52240b;
+  --shade-1: #c9431f;
+  --shade-2: #8f2c14;
+  --shade-3: #561a0b;
 
   --gutter: clamp(16px, 2vw, 32px);
   --section: clamp(88px, 11vw, 160px);
@@ -54,7 +65,7 @@ body {
   /* Coffee-plant print made on Higgsfield, toned just above the page colour */
   background: var(--canvas) url("assets/coffee-leaves.jpg") top center / max(100%, 1100px) auto repeat-y;
   color: var(--cream);
-  font: 400 15.5px/1.5 var(--f-body);
+  font: 400 14px/1.55 var(--f-body);
   -webkit-font-smoothing: antialiased;
 }
 
@@ -94,12 +105,11 @@ h1, h2, h3, p, ol, dl, dd { margin: 0; }
   text-transform: uppercase;
   text-decoration: none;
   white-space: nowrap;
-  transition: background-color 0.15s, color 0.15s, border-color 0.15s;
 }
 a.tag:hover { background: var(--orange); border-color: var(--orange); }
 .tag--solid { background: var(--cream); color: var(--black); }
 a.tag--solid:hover { color: var(--cream); }
-.tag--quiet { border-color: var(--latte); color: var(--cream-dim); }
+.tag--quiet { border-color: var(--caramel); color: var(--cream-dim); }
 
 .btn {
   display: inline-flex;
@@ -113,10 +123,33 @@ a.tag--solid:hover { color: var(--cream); }
   letter-spacing: 0.02em;
   text-transform: uppercase;
   text-decoration: none;
-  transition: background-color 0.15s, color 0.15s;
 }
 .btn:hover { background: var(--cream); border-color: var(--cream); color: var(--black); }
-.btn--ghost { background: transparent; border-color: var(--latte); }
+.btn--ghost { background: transparent; border-color: var(--caramel); }
+
+/* Same stepped depth as the titles */
+.tag, .btn {
+  --s1: #c4ab84;
+  --s2: #8a7152;
+  --s3: #4a3a2a;
+  box-shadow: 1px 1px 0 var(--s1), 2px 2px 0 var(--s2), 3px 3px 0 var(--s3);
+  transition: background-color 0.2s var(--ease-out), color 0.2s var(--ease-out), border-color 0.2s var(--ease-out),
+    transform 0.18s var(--ease-out), box-shadow 0.18s var(--ease-out);
+}
+.btn, a.tag:hover { --s1: #c9431f; --s2: #8f2c14; --s3: #561a0b; }
+.btn--ghost, .tag--quiet { --s1: #8a5321; --s2: #5e3816; --s3: #38200c; }
+.btn:hover { --s1: #c4ab84; --s2: #8a7152; --s3: #4a3a2a; }
+@media (hover: hover) and (pointer: fine) {
+  a.tag:hover, .btn:hover {
+    transform: translate(-1px, -1px);
+    box-shadow: 1px 1px 0 var(--s1), 2px 2px 0 var(--s2), 3px 3px 0 var(--s3), 4px 4px 0 var(--s3);
+  }
+}
+a.tag:active, .btn:active {
+  transform: translate(2px, 2px);
+  box-shadow: 1px 1px 0 var(--s1);
+  transition-duration: 0.08s;
+}
 
 .display {
   font: 700 clamp(84px, 15vw, 240px)/0.82 var(--f-display);
@@ -125,32 +158,57 @@ a.tag--solid:hover { color: var(--cream); }
   color: var(--orange);
 }
 
-.display, .step__word, .bean__name, .buy__title {
-  text-shadow: 1px 1px 0 var(--shade-1), 2px 2px 0 var(--shade-2), 3px 3px 0 var(--shade-3), 4px 6px 12px rgba(0, 0, 0, 0.45);
+/* Spektra titles: subtle gradient fill, then stepped shadows for depth.
+   drop-shadow rather than text-shadow, so the shadow sits under the gradient */
+.display, .step__word, .bean__name, .buy__title, .story__lede {
+  --fill: var(--fill-orange);
+  background: var(--fill);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  /* the fill only paints inside the box; caps (and É) rise above these tight line-heights */
+  padding-top: 0.2em;
+  margin-top: -0.2em;
+  filter: drop-shadow(1px 1px 0 var(--shade-1)) drop-shadow(1px 1px 0 var(--shade-2))
+    drop-shadow(1px 1px 0 var(--shade-3)) drop-shadow(2px 4px 6px rgba(0, 0, 0, 0.4));
 }
 
-/* Cream Spektra gets grey-brown shading instead of orange */
-.step__word, .bean__name, .buy__card:first-child .buy__title {
-  --shade-1: #b09c80;
-  --shade-2: #77644e;
-  --shade-3: #3f3428;
+/* Beige titles shade towards deeper beige and brown */
+.step__word, .bean__name, .buy__card:first-child .buy__title, .story__lede {
+  --fill: var(--fill-cream);
+  --shade-1: #c4ab84;
+  --shade-2: #8a7152;
+  --shade-3: #4a3a2a;
+}
+/* Source, Roast, Pour: caramel, beige, orange */
+.step:nth-child(1) .step__word {
+  --fill: var(--fill-caramel);
+  --shade-1: #8a5321;
+  --shade-2: #5e3816;
+  --shade-3: #38200c;
 }
 .step:nth-child(3) .step__word, .buy__card:nth-child(2) .buy__title {
-  --shade-1: #c25a1c;
-  --shade-2: #8a3e12;
-  --shade-3: #52240b;
+  --fill: var(--fill-orange);
+  --shade-1: #c9431f;
+  --shade-2: #8f2c14;
+  --shade-3: #561a0b;
 }
 
 .eyebrow {
   font: 600 12px/1 var(--f-body);
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: var(--latte);
+  color: var(--caramel);
 }
 
+/* Handwritten notes sit on top of the interface, as if pencilled onto it */
 .hand {
+  position: absolute;
+  z-index: 5;
   font: 400 clamp(29px, 2.5vw, 38px)/1 var(--f-hand);
   color: var(--orange);
+  white-space: nowrap;
+  pointer-events: none;
 }
 
 .arrow {
@@ -167,7 +225,7 @@ a.tag--solid:hover { color: var(--cream); }
 .dots {
   height: 10px;
   margin: 0 var(--gutter);
-  background: radial-gradient(circle, var(--latte) 1.6px, transparent 2px) 0 0 / 12px 10px;
+  background: radial-gradient(circle, var(--caramel) 1.6px, transparent 2px) 0 0 / 12px 10px;
 }
 
 .section-head {
@@ -178,7 +236,7 @@ a.tag--solid:hover { color: var(--cream); }
   flex-wrap: wrap;
   padding: 40px var(--gutter) 48px;
 }
-.section-head__lede { max-width: 30ch; color: var(--cream-dim); font-size: 19px; }
+.section-head__lede { max-width: 32ch; color: var(--cream-dim); font-size: 16px; }
 
 /* Illustration placeholder: swap each for an <img> when the art is ready */
 .ph {
@@ -190,7 +248,7 @@ a.tag--solid:hover { color: var(--cream); }
   padding: 16px;
   border: 1.5px dashed var(--cream-faint);
   border-radius: 14px;
-  background: repeating-linear-gradient(135deg, transparent 0 13px, rgba(233, 223, 200, 0.045) 13px 14px);
+  background: repeating-linear-gradient(135deg, transparent 0 13px, rgba(236, 220, 191, 0.045) 13px 14px);
   color: var(--cream-dim);
   text-align: center;
 }
@@ -229,7 +287,7 @@ a.tag--solid:hover { color: var(--cream); }
   height: 100svh;
   min-height: 620px;
   overflow: hidden;
-  background: radial-gradient(120% 80% at 50% 110%, rgba(40, 32, 26, 0.6) 0%, transparent 60%);
+  background: radial-gradient(120% 80% at 50% 110%, rgba(52, 34, 22, 0.6) 0%, transparent 60%);
 }
 
 .hero__word {
@@ -241,10 +299,17 @@ a.tag--solid:hover { color: var(--cream); }
   font: 700 min(62vw, 92svh)/1 var(--f-display);
   letter-spacing: -0.01em;
   text-align: center;
-  color: var(--orange);
-  /* same layered depth, scaled up for the giant word */
-  text-shadow: 0.003em 0.003em 0 var(--shade-1), 0.006em 0.006em 0 var(--shade-2), 0.009em 0.009em 0 var(--shade-3), 0.012em 0.018em 0.03em rgba(0, 0, 0, 0.5);
   user-select: none;
+}
+/* Same fill and depth, scaled up; on each letter once motion.js splits the word */
+.hero__word > [aria-hidden]:not(.is-split), .hero__word .ltr {
+  display: inline-block;
+  background: var(--fill-orange);
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  filter: drop-shadow(0.003em 0.003em 0 var(--shade-1)) drop-shadow(0.003em 0.003em 0 var(--shade-2))
+    drop-shadow(0.003em 0.003em 0 var(--shade-3)) drop-shadow(0.006em 0.012em 0.02em rgba(0, 0, 0, 0.45));
 }
 
 .hero__art {
@@ -281,20 +346,6 @@ a.tag--solid:hover { color: var(--cream); }
   transform: translateX(-50%) rotate(-4deg);
 }
 .hero__sticker:hover { transform: translateX(-50%) rotate(-1deg) scale(1.03); }
-
-.hero__note {
-  position: absolute;
-  left: calc(50% + clamp(170px, 17vw, 300px));
-  top: calc(70% - 70px);
-  transform: rotate(-7deg);
-  color: var(--cream);
-}
-.hero__note .arrow {
-  display: block;
-  margin: 2px 0 0 -10px;
-  transform: scaleX(-1) rotate(-20deg);
-  color: var(--orange);
-}
 
 .hero__foot {
   position: absolute;
@@ -348,16 +399,12 @@ a.tag--solid:hover { color: var(--cream); }
 .step__word {
   font: 700 clamp(72px, 9vw, 150px)/0.82 var(--f-display);
   text-transform: uppercase;
-  color: var(--cream);
 }
-.step:nth-child(3) .step__word { color: var(--orange); }
 .step p:not(.hand) { max-width: 30ch; margin-top: 14px; color: var(--cream-dim); }
 .step__aside {
-  position: absolute;
-  right: 4%;
-  bottom: 74px;
-  transform: rotate(-8deg);
-  color: var(--cream);
+  top: 5%;
+  right: 6%;
+  transform: rotate(-9deg);
 }
 
 /* ---------- Beans: cards drawn like the moodboard widget ---------- */
@@ -378,9 +425,15 @@ a.tag--solid:hover { color: var(--cream); }
   border-radius: 34px;
   background: var(--cream);
   color: var(--black);
-  transition: transform 0.25s;
+  transition: transform 0.5s var(--ease-out);
 }
-.bean:hover .bean__panel { transform: rotate(-1.2deg); }
+@media (hover: hover) and (pointer: fine) {
+  .bean:hover .bean__panel { transform: translateY(-8px) rotate(-1.2deg); }
+}
+.bean:active .bean__panel {
+  transform: translateY(-3px) rotate(-0.6deg) scale(0.985);
+  transition-duration: 0.15s;
+}
 
 .bean__bar {
   display: flex;
@@ -472,7 +525,7 @@ a.tag--solid:hover { color: var(--cream); }
   color: var(--cream);
 }
 .bean-dialog__info .bean__name { font-size: clamp(64px, 7vw, 112px); white-space: normal; }
-.bean-dialog__notes { color: var(--cream-dim); font-size: 17px; }
+.bean-dialog__notes { color: var(--cream-dim); font-size: 15px; }
 .bean-dialog__actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 8px; }
 .bean__foot {
   padding: 16px 18px 20px;
@@ -485,23 +538,31 @@ a.tag--solid:hover { color: var(--cream); }
   text-transform: uppercase;
   white-space: nowrap;
 }
-.bean__notes { margin-top: 8px; color: var(--cream-dim); font-size: 15px; }
+.bean__notes { margin-top: 8px; color: var(--cream-dim); font-size: 13px; }
 
 .bean__hand {
+  bottom: 92px;
+  right: 5%;
+  text-align: right;
+  transform: rotate(-6deg);
+}
+.bean__hand .arrow { display: block; width: 52px; margin: 2px 34px 0 auto; }
+.bean__hand--alt { top: auto; bottom: 64px; right: 16px; transform: rotate(-5deg); }
+
+/* Pencil underline under Brazil */
+.bean__foot { position: relative; }
+.scribble {
   position: absolute;
-  top: -58px;
-  right: -6px;
-  transform: rotate(5deg);
-  color: var(--cream);
+  left: 14px;
+  top: calc(16px + clamp(56px, 5.6vw, 92px) * 0.84);
+  width: 58%;
+  height: 14px;
+  fill: none;
+  stroke: var(--orange);
+  stroke-width: 3;
+  stroke-linecap: round;
+  pointer-events: none;
 }
-.bean__hand .arrow {
-  display: block;
-  margin: 0 0 0 auto;
-  width: 48px;
-  color: var(--orange);
-  transform: rotate(18deg);
-}
-.bean__hand--alt { top: auto; bottom: -34px; right: 8px; transform: rotate(-4deg); }
 
 /* ---------- How to buy ---------- */
 
@@ -528,17 +589,12 @@ a.tag--solid:hover { color: var(--cream); }
   font: 700 clamp(64px, 7.4vw, 124px)/0.84 var(--f-display);
   text-transform: uppercase;
 }
-.buy__card:nth-child(2) .buy__title { color: var(--orange); }
-.buy__card > p:not(.tag):not(.hand) { max-width: 38ch; color: var(--cream-dim); }
+.buy__card > p:not(.tag):not(.hand) { color: var(--cream-dim); }
 .buy__art { aspect-ratio: 16 / 9; }
 .buy__actions { display: flex; flex-wrap: wrap; gap: 10px; }
-.buy__hand {
-  position: absolute;
-  bottom: clamp(30px, 3.4vw, 50px);
-  right: clamp(24px, 3vw, 44px);
-  transform: rotate(-6deg);
-  text-align: right;
-}
+/* These cross the card's border */
+.buy__card:first-child .buy__hand { top: -16px; right: 8%; transform: rotate(-5deg); }
+.buy__card:nth-child(2) .buy__hand { bottom: -18px; right: 8%; transform: rotate(-4deg); }
 
 /* ---------- Footer ---------- */
 
@@ -580,7 +636,7 @@ a.tag--solid:hover { color: var(--cream); }
   font: 600 11px/1 var(--f-body);
   letter-spacing: 0.1em;
   text-transform: uppercase;
-  color: var(--latte);
+  color: var(--caramel);
 }
 .foot__grid dd { font-size: 14px; font-weight: 500; overflow-wrap: anywhere; }
 .foot__grid a { text-decoration: none; }
@@ -612,10 +668,10 @@ a.tag--solid:hover { color: var(--cream); }
 .story-hero__word { font-size: clamp(120px, 21vw, 360px); }
 .story-hero__art { aspect-ratio: 4 / 3; }
 .story-hero__hand {
-  position: absolute;
-  left: calc(var(--gutter) + 1vw);
-  top: 112px;
-  transform: rotate(-5deg);
+  left: calc(var(--gutter) + 9vw);
+  top: 44%;
+  font-size: clamp(34px, 3.2vw, 48px);
+  transform: rotate(-8deg);
   color: var(--cream);
 }
 
@@ -629,17 +685,17 @@ a.tag--solid:hover { color: var(--cream); }
 .story__lede {
   font: 700 clamp(56px, 6.4vw, 108px)/0.86 var(--f-display);
   text-transform: uppercase;
-  text-shadow: 1px 1px 0 #b09c80, 2px 2px 0 #77644e, 3px 3px 0 #3f3428, 4px 6px 12px rgba(0, 0, 0, 0.45);
 }
-.story__body p { max-width: 46ch; margin-bottom: 1em; font-size: 20px; color: var(--cream-dim); }
-.story__body .story__hand { color: var(--orange); font-size: clamp(30px, 2.8vw, 42px); transform: rotate(-3deg); }
+.story__body p { max-width: 50ch; margin-bottom: 1em; font-size: 16px; color: var(--cream-dim); }
+.story__body { position: relative; }
+.story__body .story__hand { right: 6%; bottom: -30px; font-size: clamp(32px, 3vw, 44px); transform: rotate(-6deg); }
 
 .people { padding-top: var(--section); }
 .people__grid { grid-template-columns: repeat(4, 1fr); }
 .people__grid .bean__name { font-size: clamp(48px, 4.4vw, 76px); }
 .people__grid .bean__bar span:last-child { white-space: nowrap; }
 .bean--you { text-decoration: none; color: inherit; }
-.bean--you .bean__panel { background: var(--latte); }
+.bean--you .bean__panel { background: var(--caramel); }
 
 /* ---------- Smaller screens ---------- */
 
@@ -655,23 +711,91 @@ a.tag--solid:hover { color: var(--cream); }
   .hero__word { top: 84px; font-size: 60vw; }
   .hero__art { width: calc(100% - 2 * var(--gutter)); height: 58%; }
   .hero__sticker { top: 70%; }
-  .hero__note { left: auto; right: var(--gutter); top: calc(70% - 64px); }
 
   .steps__list { grid-template-columns: 1fr; gap: 56px; }
-  .step__aside { bottom: auto; top: 46%; }
 
   .beans__grid, .people__grid { grid-template-columns: 1fr; }
-  .bean__hand { right: 0; }
   .story-hero { padding-top: 120px; }
-  .story-hero__hand { top: 96px; }
-
-  .buy__hand { position: static; transform: rotate(-3deg); text-align: left; }
+  .story-hero__hand { top: 30%; }
   .bean-dialog__body { grid-template-columns: 1fr; }
   .bean-dialog__art .bean__art { height: auto; }
 
   .foot__top, .foot__grid, .foot__base { width: calc(100% - 2 * var(--gutter)); }
   .foot__grid { grid-template-columns: 1fr; }
   .foot__base { flex-wrap: wrap; }
+}
+
+/* ---------- Motion (only with .motion on <html>; see the <head> script) ---------- */
+
+/* Hero on load: letters rise, the art fades up, the sticker slaps on, labels arrive */
+@keyframes rise-in { from { opacity: 0; transform: translateY(0.28em); } }
+@keyframes fade-in { from { opacity: 0; } }
+@keyframes art-in { from { opacity: 0; transform: translateX(-50%) translateY(48px); } }
+@keyframes sticker-in { from { opacity: 0; transform: translateX(-50%) rotate(-18deg) scale(1.3); } }
+
+.motion .hero__word .ltr { animation: rise-in 1.1s var(--ease-out) backwards; animation-delay: calc(80ms + var(--i) * 70ms); }
+.motion .hero__art { animation: art-in 1.2s var(--ease-out) 0.45s backwards; }
+.motion .hero__sticker { animation: sticker-in 0.75s var(--ease-spring) 0.9s backwards; }
+.motion .nav > *, .motion .hero__foot > * { animation: fade-in 0.8s var(--ease-out) backwards; animation-delay: 1.05s; }
+.motion .nav > :last-child, .motion .hero__foot > :nth-child(2) { animation-delay: 1.15s; }
+.motion .hero__foot > :nth-child(3) { animation-delay: 1.25s; }
+
+/* Scroll reveals: motion.js tags elements and adds .is-in as they come into view */
+.motion [data-reveal] {
+  opacity: 0;
+  transform: translateY(28px);
+  transition: opacity 0.7s var(--ease-out), transform 0.9s var(--ease-out);
+  transition-delay: calc(var(--i, 0) * 90ms);
+}
+.motion [data-reveal="line"] { opacity: 1; transform: scaleX(0); transform-origin: left; transition: transform 1.2s var(--ease-in-out); }
+.motion [data-reveal="rise"] { transform: translateY(90px); transition-duration: 1s, 1.5s; }
+.motion [data-reveal].is-in { opacity: 1; transform: none; }
+
+/* Handwriting writes itself on, left to right, then its arrow draws */
+.hand, .hand-mark { --hand-delay: calc(var(--i, 0) * 90ms + 0.6s); }
+.motion .hand {
+  clip-path: inset(-40% 100% -40% -10%);
+  transition: clip-path 0.9s var(--ease-in-out) var(--hand-delay);
+}
+.motion .hand.is-in { clip-path: inset(-40% -10% -40% -10%); }
+.motion .hand .arrow path, .motion .hand-mark path {
+  stroke-dasharray: 1;
+  stroke-dashoffset: 1;
+  transition: stroke-dashoffset 0.55s var(--ease-in-out) calc(var(--hand-delay) + 0.75s);
+}
+.motion .hand .arrow path + path { transition-duration: 0.25s; transition-delay: calc(var(--hand-delay) + 1.25s); }
+.motion .hand-mark path { transition-duration: 0.7s; transition-delay: calc(var(--hand-delay) + 1.5s); }
+.motion .hand.is-in .arrow path, .motion .hand-mark.is-in path { stroke-dashoffset: 0; }
+
+/* Popup scales in and out; its picture settles and its text follows */
+@keyframes dialog-in { from { opacity: 0; transform: translateY(18px) scale(0.97); } }
+@keyframes dialog-out { to { opacity: 0; transform: translateY(10px) scale(0.98); } }
+@keyframes backdrop-out { to { opacity: 0; } }
+@keyframes settle { from { transform: scale(1.06); } }
+@keyframes fade-up { from { opacity: 0; transform: translateY(14px); } }
+.motion .bean-dialog[open] { animation: dialog-in 0.45s var(--ease-out); }
+.motion .bean-dialog[open]::backdrop { animation: fade-in 0.35s var(--ease-out); }
+.motion .bean-dialog[open] .bean-dialog__art .bean__art { animation: settle 1s var(--ease-out); }
+.motion .bean-dialog[open] .bean-dialog__info > * { animation: fade-up 0.6s var(--ease-out) backwards; }
+.motion .bean-dialog[open] .bean-dialog__info > :nth-child(1) { animation-delay: 0.12s; }
+.motion .bean-dialog[open] .bean-dialog__info > :nth-child(2) { animation-delay: 0.18s; }
+.motion .bean-dialog[open] .bean-dialog__info > :nth-child(3) { animation-delay: 0.24s; }
+.motion .bean-dialog.is-closing { animation: dialog-out 0.2s var(--ease-in) forwards; }
+.motion .bean-dialog.is-closing::backdrop { animation: backdrop-out 0.2s var(--ease-in) forwards; }
+
+/* Small hover touches */
+.nav__logo img { transition: transform 0.5s var(--ease-spring); }
+.hero__sticker { transition: transform 0.5s var(--ease-spring); }
+.hero__sticker:active { transform: translateX(-50%) rotate(-2deg) scale(0.97); transition-duration: 0.1s; }
+.buy__card { transition: border-color 0.3s var(--ease-out); }
+.foot__grid a {
+  background: linear-gradient(currentColor, currentColor) 0 100% / 0 1px no-repeat;
+  transition: background-size 0.35s var(--ease-out), color 0.2s var(--ease-out);
+}
+@media (hover: hover) and (pointer: fine) {
+  .nav__logo:hover img { transform: rotate(-10deg) scale(1.06); }
+  .buy__card:hover { border-color: var(--caramel); }
+  .foot__grid a:hover { background-size: 100% 1px; }
 }
 
 @media (prefers-reduced-motion: reduce) {

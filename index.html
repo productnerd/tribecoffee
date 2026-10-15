@@ -5,11 +5,13 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tribe Coffee Roasters · Limassol</title>
   <meta name="description" content="Specialty coffee, sourced from origin and roasted in Limassol. Wholesale for cafés, and bags to take home from Top Tier.">
-  <meta name="theme-color" content="#1b1612">
+  <meta name="theme-color" content="#22160f">
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@400;500;600&family=Nanum+Pen+Script&display=swap">
   <link rel="stylesheet" href="styles.css">
+  <!-- Motion runs only when wanted: off for reduced motion and for ?nomotion=1 -->
+  <script>if(!/nomotion/.test(location.search)&&!matchMedia('(prefers-reduced-motion: reduce)').matches)document.documentElement.classList.add('motion')</script>
 </head>
 <body>
 
@@ -37,10 +39,6 @@
 
       <!-- TODO: real email -->
       <a class="sticker hero__sticker" href="mailto:hello@tribecoffee.cy">hello@tribecoffee.cy</a>
-
-      <p class="hand hero__note">come say hi!
-        <svg class="arrow" viewBox="0 0 90 60" aria-hidden="true"><path d="M84 6c-14 2-40 6-56 22-7 7-11 15-13 24"/><path d="M5 40c3 5 6 9 10 13 4-5 8-8 14-11"/></svg>
-      </p>
 
       <nav class="hero__foot" aria-label="Elsewhere">
         <a class="tag" href="#contact">Get in touch</a>
@@ -99,11 +97,12 @@
             <img class="bean__art" src="assets/renders/brazil.jpg" alt="Tribe Brazil coffee bag" width="1400" height="1045" loading="lazy">
             <div class="bean__foot">
               <h3 class="bean__name">Brazil</h3>
+              <svg class="hand-mark scribble" viewBox="0 0 200 16" preserveAspectRatio="none" aria-hidden="true"><path pathLength="1" d="M3 10C40 3 78 14 116 8S176 4 197 9"/></svg>
               <p class="bean__notes">Chocolate · nuts · caramel</p>
             </div>
           </div>
           <p class="hand bean__hand">90% of you order this one
-            <svg class="arrow" viewBox="0 0 90 60" aria-hidden="true"><path d="M84 6c-14 2-40 6-56 22-7 7-11 15-13 24"/><path d="M5 40c3 5 6 9 10 13 4-5 8-8 14-11"/></svg>
+            <svg class="arrow" viewBox="0 0 90 60" aria-hidden="true"><path pathLength="1" d="M84 6c-14 2-40 6-56 22-7 7-11 15-13 24"/><path pathLength="1" d="M5 40c3 5 6 9 10 13 4-5 8-8 14-11"/></svg>
           </p>
         </article>
 
@@ -254,6 +253,7 @@
     </div>
   </dialog>
   <script src="beans.js"></script>
+  <script src="motion.js"></script>
 
 
 </body>
