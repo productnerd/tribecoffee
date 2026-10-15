@@ -1,0 +1,241 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Tribe Coffee Roasters · Limassol</title>
+  <meta name="description" content="Specialty coffee, sourced from origin and roasted in Limassol. Wholesale for cafés, and bags to take home from Top Tier.">
+  <meta name="theme-color" content="#0d0c0a">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;600&family=Mr+Dafoe&display=swap">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+  <!-- Nav: one boxed label in each corner, like the LOCAL reference -->
+  <header class="nav">
+    <a class="nav__logo" href="#top" aria-label="Tribe Coffee Roasters, home">
+      <img src="assets/tribe-logo.svg" alt="" width="64" height="64">
+    </a>
+    <a class="tag nav__mid" href="#beans">The beans</a>
+    <a class="tag nav__mid" href="#buy">Wholesale</a>
+    <a class="tag tag--solid" href="#contact">Get in touch</a>
+  </header>
+
+  <main id="top">
+
+    <!-- HERO -->
+    <section class="hero">
+      <h1 class="hero__word">
+        <span aria-hidden="true">TRIBE</span>
+        <span class="sr-only">Tribe Coffee Roasters: specialty coffee sourced from origin and roasted in Limassol</span>
+      </h1>
+
+      <div class="ph hero__art">
+        <span class="ph__label">Illustration 01 · Hero</span>
+        <span class="ph__brief">The Tribe crew, waist up, overlapping the word: two roasters, peace signs, one with a V60, one hugging a bag of beans. Stippled ink, cream + red.</span>
+      </div>
+
+      <!-- TODO: real email -->
+      <a class="sticker hero__sticker" href="mailto:hello@tribecoffee.cy">hello@tribecoffee.cy</a>
+
+      <p class="hand hero__note">come say hi!
+        <svg class="arrow" viewBox="0 0 90 60" aria-hidden="true"><path d="M84 6c-14 2-40 6-56 22-7 7-11 15-13 24"/><path d="M5 40c3 5 6 9 10 13 4-5 8-8 14-11"/></svg>
+      </p>
+
+      <nav class="hero__foot" aria-label="Elsewhere">
+        <a class="tag" href="https://instagram.com/" target="_blank" rel="noopener">Instagram</a><!-- TODO: handle -->
+        <span class="tag tag--quiet nav__mid">Roasted in Limassol</span>
+        <a class="tag nav__mid" href="#buy">Buy at Top Tier</a>
+        <a class="tag" href="#buy">Wholesale</a>
+      </nav>
+    </section>
+
+    <!-- WHAT WE DO -->
+    <section class="steps">
+      <div class="dots" aria-hidden="true"></div>
+      <p class="eyebrow">What we do</p>
+      <ol class="steps__list">
+        <li class="step">
+          <div class="ph step__art">
+            <span class="ph__label">Illustration 02</span>
+            <span class="ph__brief">A hand picking red coffee cherries</span>
+          </div>
+          <h2 class="step__word">Source</h2>
+          <p>We buy green coffee from farms we trust in Brazil, Ethiopia, Costa Rica and beyond.</p>
+        </li>
+        <li class="step">
+          <div class="ph step__art">
+            <span class="ph__label">Illustration 03</span>
+            <span class="ph__brief">The roaster drum, steam curling out</span>
+          </div>
+          <h2 class="step__word">Roast</h2>
+          <p>Small batches, roasted at our roastery in Limassol.</p>
+        </li>
+        <li class="step">
+          <div class="ph step__art">
+            <span class="ph__label">Illustration 04</span>
+            <span class="ph__brief">A pour-over, mid pour</span>
+          </div>
+          <h2 class="step__word">Pour</h2>
+          <p>Fresh beans for coffee shops, restaurants and offices, and bags for your kitchen.</p>
+          <p class="hand step__aside">(the fun part)</p>
+        </li>
+      </ol>
+    </section>
+
+    <!-- THE BEANS -->
+    <section class="beans" id="beans">
+      <div class="dots" aria-hidden="true"></div>
+      <div class="section-head">
+        <h2 class="display">The beans</h2>
+        <p class="section-head__lede">Chocolatey and easy, or bright and floral. Not sure? Ask for a Brazil.</p>
+      </div>
+
+      <div class="beans__grid">
+        <!-- TODO: confirm every name, note and size below -->
+        <article class="bean">
+          <div class="bean__panel">
+            <div class="bean__bar"><span>01</span><span class="bean__grip"></span><span>250g · 1kg</span></div>
+            <div class="ph ph--light bean__art"><span class="ph__label">Bag · Brazil</span></div>
+            <div class="bean__foot">
+              <h3 class="bean__name">Brazil</h3>
+              <p class="bean__notes">Chocolate · nuts · caramel</p>
+            </div>
+          </div>
+          <p class="hand bean__hand">90% of you order this one
+            <svg class="arrow" viewBox="0 0 90 60" aria-hidden="true"><path d="M84 6c-14 2-40 6-56 22-7 7-11 15-13 24"/><path d="M5 40c3 5 6 9 10 13 4-5 8-8 14-11"/></svg>
+          </p>
+        </article>
+
+        <article class="bean">
+          <div class="bean__panel">
+            <div class="bean__bar"><span>02</span><span class="bean__grip"></span><span>250g · 1kg</span></div>
+            <div class="ph ph--light bean__art"><span class="ph__label">Bag · Ethiopia</span></div>
+            <div class="bean__foot">
+              <h3 class="bean__name">Ethiopia</h3>
+              <p class="bean__notes">Jasmine · bergamot · citrus</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="bean">
+          <div class="bean__panel">
+            <div class="bean__bar"><span>03</span><span class="bean__grip"></span><span>250g</span></div>
+            <div class="ph ph--light bean__art"><span class="ph__label">Bag · Costa Rica</span></div>
+            <div class="bean__foot">
+              <h3 class="bean__name">Costa Rica</h3>
+              <p class="bean__notes">Honey · brown sugar · orange</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="bean">
+          <div class="bean__panel">
+            <div class="bean__bar"><span>04</span><span class="bean__grip"></span><span>250g · 1kg</span></div>
+            <div class="ph ph--light bean__art"><span class="ph__label">Bag · Excelencia</span></div>
+            <div class="bean__foot">
+              <h3 class="bean__name">Excelencia</h3>
+              <p class="bean__notes">Caramel · red fruit · cocoa</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="bean">
+          <div class="bean__panel">
+            <div class="bean__bar"><span>05</span><span class="bean__grip"></span><span>1kg</span></div>
+            <div class="ph ph--light bean__art"><span class="ph__label">Bag · Premium</span></div>
+            <div class="bean__foot">
+              <h3 class="bean__name">Premium</h3>
+              <p class="bean__notes">Our house blend for espresso</p>
+            </div>
+          </div>
+        </article>
+
+        <article class="bean">
+          <div class="bean__panel">
+            <div class="bean__bar"><span>06</span><span class="bean__grip"></span><span>250g</span></div>
+            <div class="ph ph--light bean__art"><span class="ph__label">Bag · Decaf</span></div>
+            <div class="bean__foot">
+              <h3 class="bean__name">Decaf</h3>
+              <p class="bean__notes">All the flavour, none of the jitters</p>
+            </div>
+          </div>
+          <p class="hand bean__hand bean__hand--alt">yes, it's actually good</p>
+        </article>
+      </div>
+    </section>
+
+    <!-- HOW TO BUY -->
+    <section class="buy" id="buy">
+      <div class="dots" aria-hidden="true"></div>
+      <div class="section-head">
+        <h2 class="display">Get some</h2>
+      </div>
+
+      <div class="buy__grid">
+        <article class="buy__card">
+          <p class="tag tag--quiet">Wholesale · B2B</p>
+          <h3 class="buy__title">For your café</h3>
+          <p>We supply coffee shops, restaurants and offices with freshly roasted beans. Tell us about your place and we'll find the right coffee for it.</p>
+          <div class="ph buy__art">
+            <span class="ph__label">Illustration 05</span>
+            <span class="ph__brief">An espresso machine on a café counter, a barista behind it</span>
+          </div>
+          <!-- TODO: real wholesale email + phone -->
+          <div class="buy__actions">
+            <a class="btn" href="mailto:wholesale@tribecoffee.cy">Email us</a>
+            <a class="btn btn--ghost" href="tel:+35700000000">+357 00 000 000</a>
+          </div>
+          <p class="hand buy__hand">let's talk coffee over coffee</p>
+        </article>
+
+        <article class="buy__card">
+          <p class="tag tag--quiet">At home · B2C</p>
+          <h3 class="buy__title">For your kitchen</h3>
+          <p>Our bags are on the shelf at Top Tier in Limassol. Pop in and pick up a 250g or a 1kg.</p>
+          <div class="ph buy__art">
+            <span class="ph__label">Illustration 06</span>
+            <span class="ph__brief">A moka pot on a stove, a cat watching</span>
+          </div>
+          <!-- TODO: Top Tier link + address -->
+          <div class="buy__actions">
+            <a class="btn" href="#">Visit Top Tier</a>
+            <a class="btn btn--ghost" href="#">Get directions</a>
+          </div>
+          <p class="hand buy__hand">tell them Tribe sent you</p>
+        </article>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- CONTACT -->
+  <footer class="foot" id="contact">
+    <div class="dots" aria-hidden="true"></div>
+    <div class="foot__top">
+      <h2 class="display foot__word">Say hi</h2>
+      <div class="ph foot__art">
+        <span class="ph__label">Illustration 07</span>
+        <span class="ph__brief">A coffee cherry mascot waving</span>
+      </div>
+    </div>
+
+    <!-- TODO: every value below is a placeholder -->
+    <dl class="foot__grid">
+      <div><dt>Email</dt><dd><a href="mailto:hello@tribecoffee.cy">hello@tribecoffee.cy</a></dd></div>
+      <div><dt>Wholesale</dt><dd><a href="mailto:wholesale@tribecoffee.cy">wholesale@tribecoffee.cy</a></dd></div>
+      <div><dt>Instagram</dt><dd><a href="https://instagram.com/" target="_blank" rel="noopener">@tribecoffee</a></dd></div>
+      <div><dt>Roastery</dt><dd>Limassol, Cyprus</dd></div>
+    </dl>
+
+    <div class="foot__base">
+      <img src="assets/tribe-logo.svg" alt="Tribe Coffee Roasters" width="72" height="72">
+      <p class="hand foot__hand">see you for a cup</p>
+      <p class="foot__legal">© 2026 Tribe Coffee Roasters · Roasted in Limassol</p>
+    </div>
+  </footer>
+
+</body>
+</html>

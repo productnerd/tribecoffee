@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "tribecoffee",
+      "runtimeExecutable": "/opt/homebrew/bin/python3",
+      "runtimeArgs": ["-m", "http.server", "4410", "--directory", "/Users/mariap/projects/tribecoffee"],
+      "port": 4410
+    }
+  ]
+}
