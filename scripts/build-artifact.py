@@ -1,16 +1,15 @@
 """Build the copy of the site that gets published as a Claude artifact.
 
-The artifact host wraps the main page in its own <html>/<head>/<body> and only loads fonts
-from Google Fonts or data URIs, so this writes a copy with the main page unwrapped and
-Spektra embedded in the stylesheet. Usage: python3 scripts/build-artifact.py OUT_DIR
+The artifact host wraps the main page in its own <html>/<head>/<body>, so this writes a copy
+with the main page unwrapped. Spektra is already embedded in fonts.css. Usage: python3 scripts/build-artifact.py OUT_DIR
 """
-import base64, re, shutil, sys
+import re, shutil, sys
 from pathlib import Path
 
 root = Path(__file__).resolve().parent.parent
 out = Path(sys.argv[1]); shutil.rmtree(out, ignore_errors=True); (out / 'assets').mkdir(parents=True)
 
-for name in ['story.html', 'motion.js', 'beans.js']:
+for name in ['story.html', 'motion.js', 'beans.js', 'styles.css', 'fonts.css']:
     shutil.copy(root / name, out / name)
 for item in ['tribe-mark.svg', 'coffee-leaves.jpg']:
     shutil.copy(root / 'assets' / item, out / 'assets' / item)
@@ -27,10 +26,4 @@ head = re.sub(r'\s*<meta (charset|name="viewport")[^>]*>', '', head)
 head = re.sub(r'<title>.*?</title>', '<title>Tribe Coffee Roasters</title>', head)
 (out / 'index.html').write_text(head.strip() + '\n' + body)
 
-css = (root / 'styles.css').read_text()
-font = base64.b64encode((root / 'fonts/Spektra-CondensedBold.ttf').read_bytes()).decode()
-css = css.replace('src: local("Spektra Condensed Bold"), url("fonts/Spektra-CondensedBold.ttf") format("truetype");',
-                  f'src: url(data:font/ttf;base64,{font}) format("truetype");')
-css = re.sub(r'@font-face \{\n  font-family: "Spektra";\n  src: local\("Spektra Condensed Bold Italic"\).*?\n\}\n', '', css, flags=re.S)
-(out / 'styles.css').write_text(css)
 print('built', out)
