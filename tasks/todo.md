@@ -43,10 +43,11 @@ One page, dark mode, static HTML/CSS (no build). Preview: `python3 -m http.serve
 
 ## Waiting on Maria
 - [x] B&W chosen as the default (2026-10-15, "for now"); the switch stays until the choice is final
-- [ ] When final: delete the unused image folders and the switch (`art-switch.js`, `.art-switch`)
+- [x] Switch removed and B&W is the only image set (2026-10-16); Colour and Ink remain in git history
 - [ ] Our story copy (drafted from Tribe's bag, Facebook and Instagram wording) and Our people names, roles, portraits
 - [ ] Real hello@ and wholesale@ emails (no phone number on the site, by choice)
 - [ ] Bean catalogue from Tribe (Maria is asking); until then the six cards stay as they are
-- [ ] Our people portraits (should start from photos of the real people); Premium bag has no photo yet
+- [x] Our people portraits: Spyros, Giorgos, Alin (from video frames) and a fourth placeholder
+- [ ] Roles for the team, and the fourth person's name; Premium bag has no photo yet
 - [ ] Product renders: small label details to retouch before launch (Brazil: odd mark above the name; Costa Rica: swoosh above the A missing)
 - [ ] Spektra web licence before going live (files in `fonts/` stay out of git until then)

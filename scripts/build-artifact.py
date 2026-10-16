@@ -10,7 +10,7 @@ from pathlib import Path
 root = Path(__file__).resolve().parent.parent
 out = Path(sys.argv[1]); shutil.rmtree(out, ignore_errors=True); (out / 'assets').mkdir(parents=True)
 
-for name in ['story.html', 'motion.js', 'beans.js', 'art-switch.js']:
+for name in ['story.html', 'motion.js', 'beans.js']:
     shutil.copy(root / name, out / name)
 for item in ['tribe-mark.svg', 'coffee-leaves.jpg']:
     shutil.copy(root / 'assets' / item, out / 'assets' / item)
@@ -18,6 +18,7 @@ for folder in (root / 'assets').glob('illustrations*'):
     shutil.copytree(folder, out / 'assets' / folder.name)
 for folder in (root / 'assets').glob('products*'):
     shutil.copytree(folder, out / 'assets' / folder.name)
+shutil.copytree(root / 'assets' / 'team', out / 'assets' / 'team')
 
 page = (root / 'index.html').read_text()
 head = re.search(r'<head>(.*?)</head>', page, re.S).group(1)

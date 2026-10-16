@@ -4,13 +4,22 @@
   var root = document.documentElement;
   if (!root.classList.contains('motion')) return;
 
-  // TRIBE rises in letter by letter
-  var word = document.querySelector('.hero__tribe');
-  if (word) {
-    word.innerHTML = word.textContent.split('').map(function (c, i) {
-      return '<span class="ltr" style="--i:' + i + '">' + c + '</span>';
-    }).join('');
-  }
+  // The big titles (TRIBE, OUR STORY) rise in letter by letter; line breaks stay as they are
+  document.querySelectorAll('.hero__tribe, .story-hero__word').forEach(function (word) {
+    var i = 0;
+    Array.prototype.slice.call(word.childNodes).forEach(function (node) {
+      if (node.nodeType !== 3) return;
+      var letters = document.createDocumentFragment();
+      node.textContent.split('').forEach(function (c) {
+        var span = document.createElement('span');
+        span.className = 'ltr';
+        span.style.setProperty('--i', i++);
+        span.textContent = c;
+        letters.appendChild(span);
+      });
+      word.replaceChild(letters, node);
+    });
+  });
 
   // Tag what fades up as it scrolls in; siblings matching the same selector stagger
   function tag(selector, kind) {
@@ -23,7 +32,7 @@
     });
   }
   tag('.dots', 'line');
-  tag('.eyebrow, .section-head > *, .story__grid > *, .story-hero > .display, .story-hero__art');
+  tag('.eyebrow, .section-head > *, .story__grid > *, .story-hero__art');
   tag('.steps__list > li, .beans__grid > *, .buy__grid > *');
   tag('.foot__top, .foot__grid, .foot__base');
 
